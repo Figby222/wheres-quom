@@ -1,0 +1,28 @@
+Image
+Get image using useAllData
+Set onClick() to call selectCharacterPositionPost() with character & coordinates
+render the image onto the screen
+
+
+props: useAllData, onClick(characterId, coords), selectCharacterPositionPost(character, coordinates)
+
+SelectionBox
+
+Add dropDownMenuIsOpen state and set to true initially
+
+Set onDropDownMenuClick(characterId, coords) to close the dropdown menu on click,
+call onClick() with characterId & coords
+
+render CharacterDropDownMenu with isOpen as dropDownMenuIsOpen, onClick as onDropDownMenuClick(),
+& characters as characters
+
+
+props: coordinates, onClick(characterId, coords), characters, 
+
+
+CharacterDropDownMenu
+
+iterate over characters list
+for each character create button and give onClick(characterId, coords{}) function on button click
+
+props: isOpen, onClick(characterId, coords), characters
