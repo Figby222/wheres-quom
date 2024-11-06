@@ -1,7 +1,8 @@
 {
-  "name": "react-template",
+  "name": "wheres-quom",
   "private": true,
   "version": "0.0.0",
+  "description": "A Where's Waldo clone game made with React and a REST API",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,6 +11,16 @@
     "test": "vitest",
     "preview": "vite preview"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Figby222/wheres-quom.git"
+  },
+  "author": "Figby222",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Figby222/wheres-quom/issues"
+  },
+  "homepage": "https://github.com/Figby222/wheres-quom#readme",
   "dependencies": {
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
