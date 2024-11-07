@@ -7,4 +7,8 @@ describe("MainImage existence", () => {
     it("Exists", () => {
         expect(MainImage).toBeDefined();
     })
+
+    it("Is a function", () => {
+        expect(MainImage).toBeTypeOf("function");
+    })
 })
