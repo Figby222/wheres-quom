@@ -1,3 +1,3 @@
-const MainImage = "";
+const MainImage = () => {};
 
 export default MainImage;
