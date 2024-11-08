@@ -4,6 +4,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     const { error, loading, data } = useAllData();
     return (
         <>
+        <p className="loading">Loading...</p>
         </>
     )
 };
