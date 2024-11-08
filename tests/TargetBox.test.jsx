@@ -6,4 +6,8 @@ describe("TargetBox existence", () => {
     it("Exists", () => {
         expect(TargetBox).toBeDefined();
     })
+
+    it("Is a function", () => {
+        expect(TargetBox).toBeTypeOf("function");
+    })
 })
