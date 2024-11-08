@@ -11,6 +11,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
         <>
             <img src="" alt={data.imageAlt} />
             <section className="character-selection">
+                <div role="targetbox"></div>
                 <ul className="character-selection-ul">
                     { data.characters.map((character) => {
                         return <li key={character.id} className="select-character">
