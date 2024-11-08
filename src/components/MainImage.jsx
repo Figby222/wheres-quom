@@ -10,6 +10,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     return (
         <>
             <img src="" alt={data.imageAlt} />
+            <p className="select-quom">quom</p>
         </>
     )
 };
