@@ -2,6 +2,7 @@ import { describe, it, expect, vi } from "vitest";
 import { screen, render } from "@testing-library/react";
 import { getUseAllDataMock } from "../lib/testing-utils.jsx";
 import MainImage from "../src/components/MainImage.jsx";
+import userEvent from "@testing-library/user-event";
 
 
 describe("MainImage existence", () => {
@@ -86,6 +87,33 @@ describe("Image loading", () => {
             .not.toBeInTheDocument();
 
         expect(screen.queryByAltText(/Test Different Alt Text/i))
+            .toBeInTheDocument();
+    })
+})
+
+describe("Clicking the image", () => {
+    it("Prints a character selection to the screen", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Alt Text",
+            characters: [
+                {
+                    id: 1,
+                    name: "quom"
+                }
+            ]
+        });
+
+        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
+
+        const image = screen.queryByAltText(/Test Alt Text/i);
+
+        const user = userEvent.setup();
+        await user.click(image);
+
+        expect(screen.queryByText(/quom/i))
             .toBeInTheDocument();
     })
 })
