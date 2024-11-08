@@ -17,14 +17,28 @@ Render SelectionBox with coordinates & onCharacterSelect
 props: useAllData, onClick(characterId, coords), selectCharacterPositionPost(character, coordinates)
 
 
+TargetMarker 
+
+if coordinates are null, render empty JSX template
+
+Add dropDownMenuIsOpen state and set to true initially
+
+Set onDropDownMenuClick(characterId, coords) to close the dropdown menu on click,
+call onCharacterSelect() with characterId & coords
+
+render SelectionBox with 
+
+render CharacterDropDownMenu with isOpen as dropDownMenuIsOpen, onClick as onDropDownMenuClick(),
+& characters as characters
 
 
+props: imageCoordinates, userClickCoordinates, onCharacterSelect(characterId, coordinates), characters, isVisible
+
+isVisible ( boolean )
 
 
 
 SelectionBox
-
-if coordinates are null, render empty JSX template
 
 Set SelectionBox width and height to 100px
 
@@ -32,21 +46,12 @@ Set SelectionBox xPos to difference of coordinates.x and half of width
 Set SelectionBox yPos to difference of coordinates.x and half of height
 This will put the box of the center of the user's ClickEvent
 
-Add dropDownMenuIsOpen state and set to true initially
 
-Set onDropDownMenuClick(characterId, coords) to close the dropdown menu on click,
-call onCharacterSelect() with characterId & coords
-
-render CharacterDropDownMenu with isOpen as dropDownMenuIsOpen, onClick as onDropDownMenuClick(),
-& characters as characters
+props: imageCoordinates, userClickCoordinates,
 
 
-props: coordinates, onCharacterSelect(characterId, coords), characters, 
-
-
-
-
-
+imageCoordinates { imageX, imageY, imageXEnd, imageYEnd }
+userClickCoordinates { x, y }
 
 
 
