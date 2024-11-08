@@ -1,28 +1,59 @@
 Image
 Get image using useAllData
-Set onClick() to call selectCharacterPositionPost() with character & coordinates
-render the image onto the screen
+Set onCharacterSelect() to call selectCharacterPositionPost() with character & coordinates
+render the image onto the screen'
 
+Add coordinates state with null coordinates initially
+
+Set onImageClick() to 
+
+Get image X and Y pos into imageX & imageY,
+and set imageXEnd to imageX + imageWidth & imageYEnd to imageY + imageHeight
+
+Set coordinates to object of imageX, imageY, imageXEnd, & imageYEnd
+
+Render SelectionBox with coordinates & onCharacterSelect
 
 props: useAllData, onClick(characterId, coords), selectCharacterPositionPost(character, coordinates)
 
+
+
+
+
+
+
 SelectionBox
+
+if coordinates are null, render empty JSX template
+
+Set SelectionBox width and height to 100px
+
+Set SelectionBox xPos to difference of coordinates.x and half of width
+Set SelectionBox yPos to difference of coordinates.x and half of height
+This will put the box of the center of the user's ClickEvent
 
 Add dropDownMenuIsOpen state and set to true initially
 
 Set onDropDownMenuClick(characterId, coords) to close the dropdown menu on click,
-call onClick() with characterId & coords
+call onCharacterSelect() with characterId & coords
 
 render CharacterDropDownMenu with isOpen as dropDownMenuIsOpen, onClick as onDropDownMenuClick(),
 & characters as characters
 
 
-props: coordinates, onClick(characterId, coords), characters, 
+props: coordinates, onCharacterSelect(characterId, coords), characters, 
+
+
+
+
+
+
+
 
 
 CharacterDropDownMenu
 
 iterate over characters list
-for each character create button and give onClick(characterId, coords{}) function on button click
+for each character create button and give onCharacterSelect(characterId, coords{}) function on button click
 
-props: isOpen, onClick(characterId, coords), characters
+props: isOpen, onCharacterSelect(characterId, coords), characters
