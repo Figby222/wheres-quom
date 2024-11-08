@@ -6,9 +6,10 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     if (loading) {
         return (<p className="loading">Loading...</p>)
     }
-    
+
     return (
         <>
+            <img src="" alt={data.imageAlt} />
         </>
     )
 };
