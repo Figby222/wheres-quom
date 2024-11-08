@@ -1,3 +1,3 @@
-const TargetBox = "";
+const TargetBox = () => {};
 
 export default TargetBox;
