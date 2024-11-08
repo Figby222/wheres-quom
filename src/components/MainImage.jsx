@@ -2,9 +2,13 @@ import PropTypes from "prop-types";
 
 const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     const { error, loading, data } = useAllData();
+
+    if (loading) {
+        return (<p className="loading">Loading...</p>)
+    }
+    
     return (
         <>
-        <p className="loading">Loading...</p>
         </>
     )
 };
