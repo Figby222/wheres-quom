@@ -10,7 +10,15 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     return (
         <>
             <img src="" alt={data.imageAlt} />
-            <p className="select-quom">{ data.characters.length > 0 && data.characters[0].name }</p>
+            <section className="character-selection">
+                <ul className="character-selection-ul">
+                    { data.characters.map((character) => {
+                        return <li key={character.id} className="select-character">
+                            { character.name }
+                        </li>
+                    })}
+                </ul>
+            </section>
         </>
     )
 };
