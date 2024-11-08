@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
+    const { error, loading, data } = useAllData();
     return (
         <>
         </>
