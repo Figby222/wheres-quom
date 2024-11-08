@@ -202,4 +202,28 @@ describe("Clicking the image", () => {
             .toBeInTheDocument();
         
     })
+
+    it("Doesn't render target box when image isn't clicked", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Alt Text",
+            characters: [
+                {
+                    id: 1,
+                    name: "Comal",
+                },
+                {
+                    id: 2,
+                    name: "quom",
+                }
+            ]
+        });
+
+        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
+
+        expect(screen.queryByRole("targetbox"))
+            .not.toBeInTheDocument();
+    })
 })
