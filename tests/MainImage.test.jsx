@@ -162,6 +162,11 @@ describe("Clicking the image", () => {
 
         render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
 
+        const image = screen.queryByAltText(/Test Alt Text/i);
+
+        const user = userEvent.setup();
+        await user.click(image);
+
         expect(screen.queryByText(/Comal/i)).toBeInTheDocument();
         expect(screen.queryByText(/quom/i)).toBeInTheDocument();
     })
