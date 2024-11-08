@@ -26,3 +26,16 @@ describe("useAllData", () => {
             .toHaveBeenCalled();
     })
 })
+
+describe("Image loading", () => {
+    it("Returns loading feedback whilst loading", () => {
+        const mockUseAllData = getUseAllDataMock(false, true, null);
+
+        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
+
+        expect(screen.queryByText(/Loading/i))
+            .toBeInTheDocument();
+    })
+})
