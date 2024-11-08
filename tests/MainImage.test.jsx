@@ -70,4 +70,22 @@ describe("Image loading", () => {
         expect(screen.queryByAltText(/Test Alt Text/i))
             .toBeInTheDocument();
     })
+
+    it("Renders an image with different alt text when done loading", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Different Alt Text",
+            characters: [],
+        });
+
+        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
+
+        expect(screen.queryByText(/Loading/i))
+            .not.toBeInTheDocument();
+
+        expect(screen.queryByAltText(/Test Different Alt Text/i))
+            .toBeInTheDocument();
+    })
 })
