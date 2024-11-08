@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const MainImage = ({ useAllData, onClick, selectCharacterPositionPost }) => {
+const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     return (
         <>
         </>
@@ -9,7 +9,6 @@ const MainImage = ({ useAllData, onClick, selectCharacterPositionPost }) => {
 
 MainImage.propTypes = {
     useAllData: PropTypes.func.isRequired,
-    onClick: PropTypes.func.isRequired,
     selectCharacterPositionPost: PropTypes.func.isRequired,
 }
 
