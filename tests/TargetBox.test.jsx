@@ -46,4 +46,13 @@ describe("TargetBox", () => {
         expect(targetbox.style.left)
             .toBe("6px");
     })
+
+    it("Has correct Y value", () => {
+        render(<TargetBox coordinates={{ x: 4, y: 4 }} />);
+
+        const targetbox = screen.queryByRole("targetbox");
+
+        expect(targetbox.style.top)
+            .toBe("4px");
+    })
 })
