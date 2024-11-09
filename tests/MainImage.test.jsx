@@ -289,4 +289,51 @@ describe("Target Box", () => {
         expect(screen.queryByTestId("coordinate-y").textContent)
             .toBe("4");
     })
+
+    it("Has different coordinates", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Alt Text",
+            characters: [
+                {
+                    id: 1,
+                    name: "Comal",
+                },
+                {
+                    id: 2,
+                    name: "quom",
+                }
+            ]
+        });
+
+        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
+
+        vi
+        .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
+        .mockImplementation(() => ({
+            width: 1000,
+            left: 0,
+            right: 100,
+            height: 50,
+            top: 0,
+            bottom: 50,
+        }))
+
+        const image = screen.queryByAltText("Test Alt Text");
+
+        const user = userEvent.setup();
+
+        await user.pointer({
+            keys: "[MouseLeft]",
+            target: image,
+            coords: { x: 46, y: 64 },
+        })
+
+        expect(screen.queryByTestId("coordinate-x").textContent)
+            .toBe("46");
+        expect(screen.queryByTestId("coordinate-y").textContent)
+            .toBe("64");
+    })
 })
