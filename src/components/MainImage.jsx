@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import TargetBox from "./TargetBox.jsx";
 
 const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     const { error, loading, data } = useAllData();
@@ -19,7 +20,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
         <>
             <img src="" alt={data.imageAlt} onClick={onImageClick} />
             <section className="character-selection">
-                <div role="targetbox" hidden={!isTargetBoxVisible}></div>
+                { isTargetBoxVisible && <TargetBox coordinates={{ x: 4, y: 4 }} size="" /> }
                 <ul className="character-selection-ul">
                     { data.characters.map((character) => {
                         return <li key={character.id} className="select-character">
