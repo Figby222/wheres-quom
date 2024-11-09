@@ -11,3 +11,12 @@ describe("TargetBox existence", () => {
         expect(TargetBox).toBeTypeOf("function");
     })
 })
+
+describe("TargetBox", () => {
+    it("Renders target box element", () => {
+        render(<TargetBox coordinates={{ x: 4, y: 4 }} />);
+
+        expect(screen.queryByRole("targetbox"))
+            .toBeInTheDocument();
+    })
+})
