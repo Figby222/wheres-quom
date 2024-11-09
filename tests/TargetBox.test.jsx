@@ -75,4 +75,15 @@ describe("TargetBox", () => {
         expect(targetbox.style.height)
             .toBe("250px");
     })
+
+    it("Has different size", () => {
+        render(<TargetBox coordinates={{ x: 6, y: 4 }} size={"400px"} />);
+
+        const targetbox = screen.queryByRole("targetbox");
+
+        expect(targetbox.style.width)
+            .toBe("400px");
+        expect(targetbox.style.height)
+            .toBe("400px");
+    })
 })
