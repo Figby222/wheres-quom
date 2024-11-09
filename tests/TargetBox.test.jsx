@@ -64,4 +64,15 @@ describe("TargetBox", () => {
         expect(targetbox.style.top)
             .toBe("6px");
     })
+
+    it("Has the correct size", () => {
+        render(<TargetBox coordinates={{ x: 6, y: 4 }} size={"250px"} />);
+
+        const targetbox = screen.queryByRole("targetbox");
+
+        expect(targetbox.style.width)
+            .toBe("250px");
+        expect(targetbox.style.height)
+            .toBe("250px");
+    })
 })
