@@ -4,7 +4,7 @@ import TargetBox from "./TargetBox.jsx";
 
 const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     const { error, loading, data } = useAllData();
-    const [ isTargetBoxVisible, setIsTargetBoxVisible ] = useState(false);
+    const [ targetBoxCoordinates, setTargetBoxCoordinates ] = useState(null);
 
     if (loading) {
         return (<p className="loading">Loading...</p>)
@@ -13,14 +13,14 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     const onImageClick = (e) => {
         e.preventDefault();
 
-        setIsTargetBoxVisible(!isTargetBoxVisible);
+        setTargetBoxCoordinates({ x: e.clientX, y: e.clientY })
     }
 
     return (
         <>
             <img src="" alt={data.imageAlt} onClick={onImageClick} />
             <section className="character-selection">
-                { isTargetBoxVisible && <TargetBox coordinates={{ x: 4, y: 4 }} size="" /> }
+                { targetBoxCoordinates && <TargetBox coordinates={targetBoxCoordinates} size="" /> }
                 <ul className="character-selection-ul">
                     { data.characters.map((character) => {
                         return <li key={character.id} className="select-character">
