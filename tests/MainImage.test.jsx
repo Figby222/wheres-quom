@@ -4,6 +4,20 @@ import { getUseAllDataMock } from "../lib/testing-utils.jsx";
 import MainImage from "../src/components/MainImage.jsx";
 import userEvent from "@testing-library/user-event";
 
+vi.mock("../src/components/TargetBox.jsx", () => ({
+        default: ({ coordinates, size}) => {
+            console.log(coordinates)
+            return (
+                <>
+                    <div data-testId="targetbox" className="target-box" role="targetbox"></div>
+                    <div data-testId="coordinate-x">{ coordinates.x }</div>
+                    <div data-testId="coordinate-y">{ coordinates.y }</div>
+                    <div data-testId="size">{ size }</div>
+                </>
+            )
+        }
+}))
+
 
 describe("MainImage existence", () => {
     it("Exists", () => {
@@ -225,5 +239,54 @@ describe("Clicking the image", () => {
 
         expect(screen.queryByRole("targetbox"))
             .not.toBeInTheDocument();
+    })
+})
+
+describe("Target Box", () => {
+    it("Has the correct coordinates", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Alt Text",
+            characters: [
+                {
+                    id: 1,
+                    name: "Comal",
+                },
+                {
+                    id: 2,
+                    name: "quom",
+                }
+            ]
+        });
+
+        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
+
+        vi
+        .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
+        .mockImplementation(() => ({
+            width: 1000,
+            left: 0,
+            right: 100,
+            height: 50,
+            top: 0,
+            bottom: 50,
+        }))
+
+        const image = screen.queryByAltText(/Test Alt Text/i);
+
+        const user = userEvent.setup();
+
+        await user.pointer({
+            keys: "[MouseLeft]",
+            target: image,
+            coords: { x: 4, y: 4 },
+        })
+
+        expect(screen.queryByTestId("coordinate-x").textContent)
+            .toBe("4");
+        expect(screen.queryByTestId("coordinate-y").textContent)
+            .toBe("4");
     })
 })
