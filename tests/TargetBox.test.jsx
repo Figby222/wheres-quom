@@ -28,4 +28,13 @@ describe("TargetBox", () => {
         expect(targetbox.style.position)
             .toBe("absolute");
     })
+
+    it("Has correct X value", () => {
+        render(<TargetBox coordinates={{ x: 4, y: 4 }} />);
+
+        const targetbox = screen.queryByRole("targetbox");
+
+        expect(targetbox.style.left)    
+            .toBe("4px");
+    })
 })
