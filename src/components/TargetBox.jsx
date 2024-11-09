@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 const TargetBox = ({ coordinates }) => {
     return (
         <>
-            <div className="target-box" role="targetbox"></div>
+            <div className="target-box" role="targetbox" 
+                style={{ position: "absolute" }}>
+                </div>
         </>
     )
 };
