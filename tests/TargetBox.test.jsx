@@ -37,4 +37,13 @@ describe("TargetBox", () => {
         expect(targetbox.style.left)    
             .toBe("4px");
     })
+
+    it("Has different X value", () => {
+        render(<TargetBox coordinates={{ x: 6, y: 4 }} />);
+
+        const targetbox = screen.queryByRole("targetbox");
+
+        expect(targetbox.style.left)
+            .toBe("6px");
+    })
 })
