@@ -55,4 +55,13 @@ describe("TargetBox", () => {
         expect(targetbox.style.top)
             .toBe("4px");
     })
+
+    it("Has different Y value", () => {
+        render(<TargetBox coordinates={{ x: 4, y: 6 }} />);
+
+        const targetbox = screen.queryByRole("targetbox");
+
+        expect(targetbox.style.top)
+            .toBe("6px");
+    })
 })
