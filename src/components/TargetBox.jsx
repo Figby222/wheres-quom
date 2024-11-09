@@ -4,7 +4,7 @@ const TargetBox = ({ coordinates, size }) => {
     return (
         <>
             <div className="target-box" role="targetbox" 
-                style={{ position: "absolute" }}></div>
+                style={{ position: "absolute", left: "4px" }}></div>
         </>
     )
 };
