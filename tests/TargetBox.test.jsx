@@ -14,14 +14,14 @@ describe("TargetBox existence", () => {
 
 describe("TargetBox", () => {
     it("Renders target box element", () => {
-        render(<TargetBox coordinates={{ x: 4, y: 4 }} />);
+        render(<TargetBox coordinates={{ x: 4, y: 4 }} size="400px" />);
 
         expect(screen.queryByRole("targetbox"))
             .toBeInTheDocument();
     })
 
     it("Is absolutely positioned", () => {
-        render(<TargetBox coordinates={{ x: 4, y: 4 }} />);
+        render(<TargetBox coordinates={{ x: 4, y: 4 }} size="400px" />);
 
         const targetbox = screen.queryByRole("targetbox");
 
@@ -30,7 +30,7 @@ describe("TargetBox", () => {
     })
 
     it("Has correct X value", () => {
-        render(<TargetBox coordinates={{ x: 4, y: 4 }} />);
+        render(<TargetBox coordinates={{ x: 4, y: 4 }} size="400px" />);
 
         const targetbox = screen.queryByRole("targetbox");
 
@@ -39,7 +39,7 @@ describe("TargetBox", () => {
     })
 
     it("Has different X value", () => {
-        render(<TargetBox coordinates={{ x: 6, y: 4 }} />);
+        render(<TargetBox coordinates={{ x: 6, y: 4 }} size="400px" />);
 
         const targetbox = screen.queryByRole("targetbox");
 
@@ -48,7 +48,7 @@ describe("TargetBox", () => {
     })
 
     it("Has correct Y value", () => {
-        render(<TargetBox coordinates={{ x: 4, y: 4 }} />);
+        render(<TargetBox coordinates={{ x: 4, y: 4 }} size="400px" />);
 
         const targetbox = screen.queryByRole("targetbox");
 
@@ -57,7 +57,7 @@ describe("TargetBox", () => {
     })
 
     it("Has different Y value", () => {
-        render(<TargetBox coordinates={{ x: 4, y: 6 }} />);
+        render(<TargetBox coordinates={{ x: 4, y: 6 }} size="400px" />);
 
         const targetbox = screen.queryByRole("targetbox");
 
