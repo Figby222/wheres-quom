@@ -19,4 +19,13 @@ describe("TargetBox", () => {
         expect(screen.queryByRole("targetbox"))
             .toBeInTheDocument();
     })
+
+    it("Is absolutely positioned", () => {
+        render(<TargetBox coordinates={{ x: 4, y: 4 }} />);
+
+        const targetbox = screen.queryByRole("targetbox");
+
+        expect(targetbox.style.position)
+            .toBe("absolute");
+    })
 })
