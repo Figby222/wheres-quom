@@ -7,8 +7,8 @@ const TargetBox = ({ coordinates, size }) => {
                     position: "absolute", 
                     left: `${coordinates.x}px`, 
                     top: `${coordinates.y}px`, 
-                    width: "250px", 
-                    height: "250px" 
+                    width: size, 
+                    height: size 
                     }}></div>
         </>
     )
