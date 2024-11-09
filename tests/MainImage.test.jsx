@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import { screen, render } from "@testing-library/react";
 import { getUseAllDataMock } from "../lib/testing-utils.jsx";
 import MainImage from "../src/components/MainImage.jsx";
@@ -243,6 +243,10 @@ describe("Clicking the image", () => {
 })
 
 describe("Target Box", () => {
+    afterEach(() => {
+        vi.restoreAllMocks();
+    });
+    
     it("Has the correct coordinates", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             imageSrc: "/",
