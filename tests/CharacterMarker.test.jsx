@@ -15,14 +15,14 @@ describe("CharacterMarker existence", () => {
 
 describe("CharacterMarker", () => {
     it("Renders a CharacterMarker element", () => {
-        render(<CharacterMarker coordinates={{  x: 4, y: 4 }} />);
+        render(<CharacterMarker coordinates={{  x: 4, y: 4 }} size="10px" />);
 
         expect(screen.queryByRole("charactermarker"))
             .toBeInTheDocument();
     })
 
     it("Is absolutely positioned", () => {
-        render(<CharacterMarker coordinates={{ x: 4, y: 4 }} />);
+        render(<CharacterMarker coordinates={{ x: 4, y: 4 }} size="10px" />);
 
         const characterMarker = screen.queryByRole("charactermarker");
 
@@ -31,7 +31,7 @@ describe("CharacterMarker", () => {
     })
 
     it("Has the correct X coordinate", () => {
-        render(<CharacterMarker coordinates={{ x: 6, y: 4 }} />)
+        render(<CharacterMarker coordinates={{ x: 6, y: 4 }} size="10px" />)
 
         const characterMarker = screen.queryByRole("charactermarker");
 
@@ -40,7 +40,7 @@ describe("CharacterMarker", () => {
     })
 
     it("Has different X coordinate", () => {
-        render(<CharacterMarker coordinates={{ x: 4, y: 4 }} />);
+        render(<CharacterMarker coordinates={{ x: 4, y: 4 }} size="10px" />);
 
         const characterMarker = screen.queryByRole("charactermarker");
 
@@ -49,7 +49,7 @@ describe("CharacterMarker", () => {
     })
 
     it("Has the correct Y coordinate", () => {
-        render(<CharacterMarker coordinates={{ x: 4, y: 4 }} />);
+        render(<CharacterMarker coordinates={{ x: 4, y: 4 }} size="10px" />);
 
         const characterMarker = screen.queryByRole("charactermarker");
 
@@ -58,7 +58,7 @@ describe("CharacterMarker", () => {
     })
 
     it("Has different Y coordinate", () => {
-        render(<CharacterMarker coordinates={{ x: 4, y: 6 }} />);
+        render(<CharacterMarker coordinates={{ x: 4, y: 6 }} size="10px" />);
 
         const characterMarker = screen.queryByRole("charactermarker");
 
