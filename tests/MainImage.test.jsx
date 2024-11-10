@@ -407,4 +407,39 @@ describe("SelectCharacterPositionPost", () => {
         expect(mockSelectCharacterPositionPost)
             .toHaveBeenCalled();
     })
+
+    it("Only gets called on character selection click", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Alt Text",
+            characters: [
+                {
+                    id: 1,
+                    name: "Comal",
+                },
+                {
+                    id: 2,
+                    name: "quom",
+                }
+            ]
+        });
+
+        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
+
+        const image = screen.queryByAltText("Test Alt Text");
+        
+        
+        const user = userEvent.setup();
+        
+        await user.pointer({
+            keys: "[MouseLeft]",
+            target: image,
+            coords: { x: 46, y: 64 },
+        })
+
+        expect(mockSelectCharacterPositionPost)
+            .not.toHaveBeenCalled();
+    })
 })
