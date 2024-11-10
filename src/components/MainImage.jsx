@@ -20,14 +20,19 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
         <>
             <img src="" alt={data.imageAlt} onClick={onImageClick} />
             <section className="character-selection">
-                { targetBoxCoordinates && <TargetBox coordinates={targetBoxCoordinates} size="" /> }
-                <ul className="character-selection-ul">
-                    { data.characters.map((character) => {
-                        return <li key={character.id} className="select-character">
-                            { character.name }
-                        </li>
-                    })}
-                </ul>
+                { 
+                    targetBoxCoordinates && 
+                    <>
+                        <TargetBox coordinates={targetBoxCoordinates} size="" /> 
+                        <ul className="character-selection-ul">
+                            { data.characters.map((character) => {
+                                return <li key={character.id} className="select-character">
+                                    { character.name }
+                                </li>
+                            })}
+                        </ul>
+                    </>
+                }
             </section>
         </>
     )
