@@ -1,4 +1,4 @@
-const CharacterMarker = "";
+const CharacterMarker = () => {};
 
 
 export default CharacterMarker;
