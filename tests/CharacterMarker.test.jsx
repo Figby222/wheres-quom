@@ -20,4 +20,13 @@ describe("CharacterMarker", () => {
         expect(screen.queryByRole("charactermarker"))
             .toBeInTheDocument();
     })
+
+    it("Is absolutely positioned", () => {
+        render(<CharacterMarker coordinates={{ x: 4, y: 4 }} />);
+
+        const characterMarker = screen.queryByRole("charactermarker");
+
+        expect(characterMarker.style.position)
+            .toBe("absolute");
+    })
 })
