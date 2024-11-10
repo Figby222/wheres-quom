@@ -76,4 +76,15 @@ describe("CharacterMarker", () => {
         expect(characterMarker.style.height)
             .toBe("10px");
     })
+
+    it("Has different given size", () => {
+        render(<CharacterMarker coordinates={{ x: 4, y: 6 }} size={"4px"} />);
+
+        const characterMarker = screen.queryByRole("charactermarker");
+
+        expect(characterMarker.style.width)
+            .toBe("4px");
+        expect(characterMarker.style.height)
+            .toBe("4px");
+    })
 })
