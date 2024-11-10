@@ -6,6 +6,8 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     const { error, loading, data } = useAllData();
     const [ targetBoxCoordinates, setTargetBoxCoordinates ] = useState(null);
 
+    selectCharacterPositionPost();
+
     if (loading) {
         return (<p className="loading">Loading...</p>)
     }
