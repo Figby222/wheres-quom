@@ -185,6 +185,32 @@ describe("Clicking the image", () => {
         expect(screen.queryByText(/quom/i)).toBeInTheDocument();
     })
 
+    it("Only renders character selection options when image is clicked", () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Alt Text",
+            characters: [
+                {
+                    id: 1,
+                    name: "Comal",
+                },
+                {
+                    id: 2,
+                    name: "quom",
+                }
+            ]
+        });
+
+        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
+
+        expect(screen.queryByText(/Comal/i))
+            .not.toBeInTheDocument();
+        expect(screen.queryByText(/quom/i))
+            .not.toBeInTheDocument();
+    })
+
 
     
     it("Renders target box on click", async () => {
