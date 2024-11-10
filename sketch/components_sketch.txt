@@ -1,9 +1,20 @@
 Image
 Get image using useAllData
+
+Add targetBoxCoordinates state with null coordinates initially
+
+Add characterMarkers state, which is an array of objects
+each object has a characterId, and x and y coordinates
+
 Set onCharacterSelect() to call selectCharacterPositionPost() with character & coordinates
+Additionally, if selectCharacterPositionPost returns a successful response,
+Add response.data.character to characterMarkers
+If the response isn't successful, display some error message
+Either way remove the set targetBoxCoordinates state to null
+
 render the image onto the screen'
 
-Add coordinates state with null coordinates initially
+
 
 Set onImageClick() to 
 
@@ -62,3 +73,14 @@ iterate over characters list
 for each character create button and give onCharacterSelect(characterId, coords{}) function on button click
 
 props: isOpen, onCharacterSelect(characterId, coords), characters
+
+
+
+CharacterMarker
+
+set position to absolute
+render div at specified coordinates within the main image with a green dot
+
+
+
+props: coordinates, characterId
