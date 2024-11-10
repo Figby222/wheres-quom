@@ -511,7 +511,7 @@ describe("SelectCharacterPositionPost", () => {
         const yCoordinateAsPercentageOfImageHeight = getElementCoordinatePercentage(y, imageOffsetY, imageRect.height);
 
         expect(mockSelectCharacterPositionPost)
-            .toHaveBeenCalledWith({
+            .toHaveBeenCalledWith(1, {
                 x: xCoordinateAsPercentageOfImageWidth,
                 y: yCoordinateAsPercentageOfImageHeight
             });
@@ -562,7 +562,7 @@ describe("SelectCharacterPositionPost", () => {
             coords: { x: x, y: y },
         })
 
-        const comalButton = screen.queryByText(/Comal/i);
+        const comalButton = screen.queryByText(/quom/i);
 
         await user.click(comalButton);
 
@@ -582,12 +582,12 @@ describe("SelectCharacterPositionPost", () => {
         const yCoordinateAsPercentageOfImageHeight = getElementCoordinatePercentage(y, imageOffsetY, imageRect.height);
 
         expect(mockSelectCharacterPositionPost)
-            .not.toHaveBeenCalledWith({
+            .not.toHaveBeenCalledWith(1, {
                 x: 1.4000000000000001,
                 y: 12
             })
         expect(mockSelectCharacterPositionPost)
-            .toHaveBeenCalledWith({
+            .toHaveBeenCalledWith(2, {
                 x: xCoordinateAsPercentageOfImageWidth,
                 y: yCoordinateAsPercentageOfImageHeight
             })
