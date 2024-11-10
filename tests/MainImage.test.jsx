@@ -517,4 +517,79 @@ describe("SelectCharacterPositionPost", () => {
             });
         
     })
+
+    it("Gets called with different args", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Alt Text",
+            characters: [
+                {
+                    id: 1,
+                    name: "Comal",
+                },
+                {
+                    id: 2,
+                    name: "quom",
+                }
+            ]
+        });
+
+        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
+
+        vi
+        .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
+        .mockImplementation(() => ({
+            width: 500,
+            left: 24,
+            right: 0,
+            height: 96,
+            top: 64,
+            bottom: 0,
+        }))
+
+        const image = screen.queryByAltText("Test Alt Text");
+
+        const user = userEvent.setup();
+
+        const x = 46;
+        const y = 64;
+
+        await user.pointer({
+            keys: "[MouseLeft]",
+            target: image,
+            coords: { x: x, y: y },
+        })
+
+        const comalButton = screen.queryByText(/Comal/i);
+
+        await user.click(comalButton);
+
+        const getElementCoordinatePercentage = (coordinateInPixels, elementDimensionOffsetInPixels, elementDimensionLengthInPixels) => {
+            const calculatedCoordinate =
+                (coordinateInPixels - elementDimensionOffsetInPixels) / elementDimensionLengthInPixels;
+
+            return calculatedCoordinate * 100;
+        }
+
+        const imageRect = image.getBoundingClientRect();
+
+        const imageOffsetX = imageRect.left;
+        const imageOffsetY = imageRect.top;
+
+        const xCoordinateAsPercentageOfImageWidth = getElementCoordinatePercentage(x, imageOffsetX, imageRect.width);
+        const yCoordinateAsPercentageOfImageHeight = getElementCoordinatePercentage(y, imageOffsetY, imageRect.height);
+
+        expect(mockSelectCharacterPositionPost)
+            .not.toHaveBeenCalledWith({
+                x: 1.4000000000000001,
+                y: 12
+            })
+        expect(mockSelectCharacterPositionPost)
+            .toHaveBeenCalledWith({
+                x: xCoordinateAsPercentageOfImageWidth,
+                y: yCoordinateAsPercentageOfImageHeight
+            })
+    })
 })
