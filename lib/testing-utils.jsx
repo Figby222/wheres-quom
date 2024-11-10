@@ -17,4 +17,11 @@ const getUseAllDataMock = (error, loading, data) => {
     })
 }
 
-export { getRenderFunction, getUseAllDataMock }
+const getElementCoordinatePercentage = (coordinateInPixels, elementDimensionOffsetInPixels, elementDimensionLengthInPixels) => {
+    const calculatedCoordinate =
+        (coordinateInPixels - elementDimensionOffsetInPixels) / elementDimensionLengthInPixels;
+
+    return calculatedCoordinate * 100;
+}
+
+export { getRenderFunction, getUseAllDataMock, getElementCoordinatePercentage }
