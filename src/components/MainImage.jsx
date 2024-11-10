@@ -6,8 +6,6 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     const { error, loading, data } = useAllData();
     const [ targetBoxCoordinates, setTargetBoxCoordinates ] = useState(null);
 
-    selectCharacterPositionPost();
-
     if (loading) {
         return (<p className="loading">Loading...</p>)
     }
@@ -29,7 +27,9 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
                         <ul className="character-selection-ul">
                             { data.characters.map((character) => {
                                 return <li key={character.id} className="select-character">
-                                    { character.name }
+                                    <button type="button" onClick={selectCharacterPositionPost}>
+                                        { character.name }
+                                    </button>
                                 </li>
                             })}
                         </ul>
