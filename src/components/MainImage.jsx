@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import TargetBox from "./TargetBox.jsx";
+import { getCoordinateAsPercentageOfElementLength } from "../util/MainImageUtils.jsx";
 
 const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     const { error, loading, data } = useAllData();
@@ -16,6 +17,33 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
         setTargetBoxCoordinates({ x: e.clientX, y: e.clientY })
     }
 
+    const onCharacterPositionSubmission = (e) => {
+        e.preventDefault();
+
+        const { x, y } = targetBoxCoordinates;
+
+        const imageRect = e.target.getBoundingClientRect();
+
+        const imageOffsetX = imageRect.left;
+        const imageOffsetY = imageRect.top;
+
+        const xCoordinateAsPercentageOfImageWidth =
+            getCoordinateAsPercentageOfElementLength(
+                x, imageOffsetX, imageRect.width
+            );
+        const yCoordinateAsPercentageOfImageHeight = 
+            getCoordinateAsPercentageOfElementLength(
+                y, imageOffsetY, imageRect.height
+            );
+        
+        selectCharacterPositionPost({
+            x: xCoordinateAsPercentageOfImageWidth,
+            y: yCoordinateAsPercentageOfImageHeight
+        });
+
+        
+    }
+
     return (
         <>
             <img src="" alt={data.imageAlt} onClick={onImageClick} />
@@ -27,7 +55,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
                         <ul className="character-selection-ul">
                             { data.characters.map((character) => {
                                 return <li key={character.id} className="select-character">
-                                    <button type="button" onClick={() => selectCharacterPositionPost({ x: 1.4000000000000001, y: 12 })}>
+                                    <button type="button" onClick={(e) => onCharacterPositionSubmission(e)}>
                                         { character.name }
                                     </button>
                                 </li>
