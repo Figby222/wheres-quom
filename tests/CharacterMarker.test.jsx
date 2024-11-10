@@ -38,4 +38,13 @@ describe("CharacterMarker", () => {
         expect(characterMarker.style.left)
             .toBe("6px");
     })
+
+    it("Has different X coordinate", () => {
+        render(<CharacterMarker coordinates={{ x: 4, y: 4 }} />);
+
+        const characterMarker = screen.queryByRole("charactermarker");
+
+        expect(characterMarker.style.left)
+            .toBe("4px");
+    })
 })
