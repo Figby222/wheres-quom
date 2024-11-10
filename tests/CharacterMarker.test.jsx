@@ -29,4 +29,13 @@ describe("CharacterMarker", () => {
         expect(characterMarker.style.position)
             .toBe("absolute");
     })
+
+    it("Has the correct X coordinate", () => {
+        render(<CharacterMarker coordinates={{ x: 6, y: 4 }} />)
+
+        const characterMarker = screen.queryByRole("charactermarker");
+
+        expect(characterMarker.style.left)
+            .toBe("6px");
+    })
 })
