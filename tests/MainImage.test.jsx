@@ -367,3 +367,44 @@ describe("Target Box", () => {
             .toBe("64");
     })
 })
+
+describe("SelectCharacterPositionPost", () => {
+    it("Gets called when character is clicked", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Alt Text",
+            characters: [
+                {
+                    id: 1,
+                    name: "Comal",
+                },
+                {
+                    id: 2,
+                    name: "quom",
+                }
+            ]
+        });
+
+        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
+
+        const image = screen.queryByAltText("Test Alt Text");
+        
+        
+        const user = userEvent.setup();
+        
+        await user.pointer({
+            keys: "[MouseLeft]",
+            target: image,
+            coords: { x: 46, y: 64 },
+        })
+
+        const comalButton = screen.queryByText(/Comal/i);
+        
+        await user.click(comalButton);
+
+        expect(mockSelectCharacterPositionPost)
+            .toHaveBeenCalled();
+    })
+})
