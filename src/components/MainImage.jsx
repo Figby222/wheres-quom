@@ -27,7 +27,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
                         <ul className="character-selection-ul">
                             { data.characters.map((character) => {
                                 return <li key={character.id} className="select-character">
-                                    <button type="button" onClick={selectCharacterPositionPost}>
+                                    <button type="button" onClick={() => selectCharacterPositionPost({ x: 1.4000000000000001, y: 12 })}>
                                         { character.name }
                                     </button>
                                 </li>
