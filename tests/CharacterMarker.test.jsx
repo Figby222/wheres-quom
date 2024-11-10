@@ -6,4 +6,9 @@ describe("CharacterMarker existence", () => {
     it("Exists", () => {
         expect(CharacterMarker).toBeDefined();
     })
+
+    it("Is a function", () => {
+        expect(CharacterMarker).toBeTypeOf("function");
+        
+    })
 })
