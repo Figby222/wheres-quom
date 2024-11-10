@@ -7,8 +7,8 @@ const CharacterMarker = ({ coordinates, size }) => {
                 position: "absolute", 
                 left: `${coordinates.x}px`, 
                 top: `${coordinates.y}px`, 
-                width: "10px", 
-                height: "10px" 
+                width: size, 
+                height: size 
             }}></div>
         </>
     )
