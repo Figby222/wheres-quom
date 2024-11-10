@@ -369,6 +369,10 @@ describe("Target Box", () => {
 })
 
 describe("SelectCharacterPositionPost", () => {
+    afterEach(() => {
+        vi.restoreAllMocks();
+    });
+    
     it("Gets called when character is clicked", async () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             imageSrc: "/",
@@ -441,5 +445,76 @@ describe("SelectCharacterPositionPost", () => {
 
         expect(mockSelectCharacterPositionPost)
             .not.toHaveBeenCalled();
+    })
+
+    it("Gets called with the correct args", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Alt Text",
+            characters: [
+                {
+                    id: 1,
+                    name: "Comal",
+                },
+                {
+                    id: 2,
+                    name: "quom",
+                }
+            ]
+        });
+
+        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
+
+        vi
+        .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
+        .mockImplementation(() => ({
+            width: 1000,
+            left: 50,
+            right: 0,
+            height: 50,
+            top: 40,
+            bottom: 0,
+        }))
+
+        const image = screen.queryByAltText("Test Alt Text");
+
+        const user = userEvent.setup();
+
+        const x = 64;
+        const y = 46;
+
+        await user.pointer({
+            keys: "[MouseLeft]",
+            target: image,
+            coords: { x: x, y: y },
+        })
+
+        const comalButton = screen.queryByText(/Comal/i);
+
+        await user.click(comalButton);
+
+        const getElementCoordinatePercentage = (coordinateInPixels, elementDimensionOffsetInPixels, elementDimensionLengthInPixels) => {
+            const calculatedCoordinate =
+                (coordinateInPixels - elementDimensionOffsetInPixels) / elementDimensionLengthInPixels;
+
+            return calculatedCoordinate * 100;
+        }
+
+        const imageRect = image.getBoundingClientRect();
+
+        const imageOffsetX = imageRect.left;
+        const imageOffsetY = imageRect.top;
+
+        const xCoordinateAsPercentageOfImageWidth = getElementCoordinatePercentage(x, imageOffsetX, imageRect.width);
+        const yCoordinateAsPercentageOfImageHeight = getElementCoordinatePercentage(y, imageOffsetY, imageRect.height);
+
+        expect(mockSelectCharacterPositionPost)
+            .toHaveBeenCalledWith({
+                x: xCoordinateAsPercentageOfImageWidth,
+                y: yCoordinateAsPercentageOfImageHeight
+            });
+        
     })
 })
