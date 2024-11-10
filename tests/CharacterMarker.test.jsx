@@ -47,4 +47,13 @@ describe("CharacterMarker", () => {
         expect(characterMarker.style.left)
             .toBe("4px");
     })
+
+    it("Has the correct Y coordinate", () => {
+        render(<CharacterMarker coordinates={{ x: 4, y: 4 }} />);
+
+        const characterMarker = screen.queryByRole("charactermarker");
+
+        expect(characterMarker.style.top)
+            .toBe("4px");
+    })
 })
