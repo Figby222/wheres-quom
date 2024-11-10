@@ -17,7 +17,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
         setTargetBoxCoordinates({ x: e.clientX, y: e.clientY })
     }
 
-    const onCharacterPositionSubmission = (e) => {
+    const onCharacterPositionSubmission = (e, characterId) => {
         e.preventDefault();
 
         const { x, y } = targetBoxCoordinates;
@@ -36,7 +36,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
                 y, imageOffsetY, imageRect.height
             );
         
-        selectCharacterPositionPost({
+        selectCharacterPositionPost(characterId, {
             x: xCoordinateAsPercentageOfImageWidth,
             y: yCoordinateAsPercentageOfImageHeight
         });
@@ -55,7 +55,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
                         <ul className="character-selection-ul">
                             { data.characters.map((character) => {
                                 return <li key={character.id} className="select-character">
-                                    <button type="button" onClick={(e) => onCharacterPositionSubmission(e)}>
+                                    <button type="button" onClick={(e) => onCharacterPositionSubmission(e, character.id)}>
                                         { character.name }
                                     </button>
                                 </li>
