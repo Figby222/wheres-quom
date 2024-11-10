@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 const CharacterMarker = ({ coordinates }) => {
     return (
         <>
-            <div role="charactermarker"></div>
+            <div role="charactermarker" style={{ position: "absolute" }}></div>
         </>
     )
 };
