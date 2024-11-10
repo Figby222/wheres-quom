@@ -9,6 +9,15 @@ describe("CharacterMarker existence", () => {
 
     it("Is a function", () => {
         expect(CharacterMarker).toBeTypeOf("function");
-        
+
+    })
+})
+
+describe("CharacterMarker", () => {
+    it("Renders a CharacterMarker element", () => {
+        render(<CharacterMarker coordinates={{  x: 4, y: 4 }} />);
+
+        expect(screen.queryByRole("charactermarker"))
+            .toBeInTheDocument();
     })
 })
