@@ -2,12 +2,13 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import TargetBox from "./TargetBox.jsx";
 import CharacterMarker from "./CharacterMarker.jsx";
-import { getCoordinateAsPercentageOfElementLength } from "../util/MainImageUtils.jsx";
+import { getCoordinateAsPercentageOfElementLength, getCoordinateFromLengthPercentage } from "../util/MainImageUtils.jsx";
 
 const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     const { error, loading, data } = useAllData();
     const [ targetBoxCoordinates, setTargetBoxCoordinates ] = useState(null);
     const [ isCharacterMarkerVisible, setIsCharacterMarkerVisible ] = useState(false);
+    const [ characterMarker, setCharacterMarker ] = useState(null);
 
     if (loading) {
         return (<p className="loading">Loading...</p>)
@@ -47,14 +48,36 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
 
         if (response.success) {
             console.log(response.success);
+            const xCoordinateWithinImage = getCoordinateFromLengthPercentage(
+                parseInt(response.coordinates.x.replace("%", "")),
+                imageRect.width
+            )
+
+            console.log(xCoordinateWithinImage);
+
+            const yCoordinateWithinImage = getCoordinateFromLengthPercentage(
+                parseInt(response.coordinates.y.replace("%", "")),
+                imageRect.height
+            )
             setIsCharacterMarkerVisible(true);
+            setCharacterMarker({ 
+                characterId: response.characterId, 
+                x: xCoordinateWithinImage, 
+                y: yCoordinateWithinImage, 
+            })
         }
     }
 
     return (
         <>
             <img src="" alt={data.imageAlt} onClick={onImageClick} />
-            { isCharacterMarkerVisible && <CharacterMarker coordinates={{ x: "20px", y: "7.68px" }} characterId={4} size={"10%"} />  }
+            { isCharacterMarkerVisible && 
+                <CharacterMarker 
+                    coordinates={{ x: `${characterMarker.x}px`, y: `${characterMarker.y}px` }} 
+                    characterId={characterMarker.characterId} 
+                    size={"10%"} 
+                />  
+            }
             <section className="character-selection">
                 { 
                     targetBoxCoordinates && 
