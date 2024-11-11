@@ -6,6 +6,7 @@ import { getCoordinateAsPercentageOfElementLength } from "../util/MainImageUtils
 const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     const { error, loading, data } = useAllData();
     const [ targetBoxCoordinates, setTargetBoxCoordinates ] = useState(null);
+    const [ isCharacterMarkerVisible, setIsCharacterMarkerVisible ] = useState(false);
 
     if (loading) {
         return (<p className="loading">Loading...</p>)
@@ -36,18 +37,23 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
                 y, imageOffsetY, imageRect.height
             );
         
-        selectCharacterPositionPost(characterId, {
+        const response = selectCharacterPositionPost(characterId, {
             x: xCoordinateAsPercentageOfImageWidth,
             y: yCoordinateAsPercentageOfImageHeight
         });
 
-        
+        console.log(response);
+
+        if (response.success) {
+            console.log(response.success);
+            setIsCharacterMarkerVisible(true);
+        }
     }
 
     return (
         <>
             <img src="" alt={data.imageAlt} onClick={onImageClick} />
-            <div role="charactermarker"></div>
+            { isCharacterMarkerVisible && <div role="charactermarker"></div> }
             <section className="character-selection">
                 { 
                     targetBoxCoordinates && 
