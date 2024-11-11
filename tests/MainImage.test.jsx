@@ -18,6 +18,21 @@ vi.mock("../src/components/TargetBox.jsx", () => ({
         }
 }))
 
+vi.mock("../src/components/CharacterMarker.jsx", () => ({
+    default: ({ coordinates, characterId, size }) => {
+        console.log(coordinates);
+        return (
+            <>
+                <div data-test-id="charactermarker" className="character-marker" role="charactermarker"></div>
+                <div data-test-id="charactermarker-coordinate-x">{ coordinates.x }</div>
+                <div data-test-id="charactermarker-coordinate-y">{ coordinates.y }</div>
+                <div data-test-id="charactermarker-size">{ size }</div>
+                <div data-test-id="charactermarker-characterId"></div>
+            </>
+        )
+    }
+}))
+
 
 describe("MainImage existence", () => {
     it("Exists", () => {
@@ -595,5 +610,55 @@ describe("SelectCharacterPositionPost", () => {
 })
 
 describe("CharacterMarker", () => {
-    
+    afterEach(() => {
+        vi.restoreAllMocks();
+    })
+
+    it("Renders a character marker", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Alt Text",
+            characters: [
+                {
+                    id: 1,
+                    name: "Comal",
+                },
+                {
+                    id: 2,
+                    name: "quom",
+                }
+            ]
+        });
+
+        const mockSelectCharacterPositionPost = vi.fn(() => ({
+            success: true,
+            characterId: 4,
+            coordinates: {
+                x: "4%",
+                y: "8%",
+            }
+        }));
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
+
+        vi
+        .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
+        .mockImplementation(() => ({
+            width: 500,
+            left: 24,
+            right: 0,
+            height: 96,
+            top: 64,
+            bottom: 0,
+        }))
+
+        const comalButton = screen.queryByText(/quom/i);
+
+        const user = userEvent.setup();
+
+        await user.click(comalButton);
+
+        expect(screen.queryByRole("charactermarker"))
+            .toBeInTheDocument();
+    })
 })
