@@ -651,10 +651,22 @@ describe("CharacterMarker", () => {
             top: 64,
             bottom: 0,
         }))
+        
+        const image = screen.queryByAltText("Test Alt Text");
+        
+        const user = userEvent.setup();
+        
+        const x = 46;
+        const y = 64;
+
+        await user.pointer({
+            keys: "[MouseLeft]",
+            target: image,
+            coords: { x: x, y: y },
+        })
 
         const comalButton = screen.queryByText(/quom/i);
 
-        const user = userEvent.setup();
 
         await user.click(comalButton);
 
