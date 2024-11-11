@@ -7,4 +7,10 @@ const getCoordinateAsPercentageOfElementLength = (coordinateInPixels, elementDim
         
 }
 
-export { getCoordinateAsPercentageOfElementLength }
+const getCoordinateFromLengthPercentage = (pixelPercentage, parentElementLengthInPixels) => {
+    const coordinate = parentElementLengthInPixels * (pixelPercentage / 100);
+
+    return coordinate;
+}
+
+export { getCoordinateAsPercentageOfElementLength, getCoordinateFromLengthPercentage }
