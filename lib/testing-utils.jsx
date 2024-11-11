@@ -24,4 +24,10 @@ const getElementCoordinatePercentage = (coordinateInPixels, elementDimensionOffs
     return calculatedCoordinate * 100;
 }
 
-export { getRenderFunction, getUseAllDataMock, getElementCoordinatePercentage }
+const getCoordinateFromLengthPercentage = (pixelPercentage, parentElementLengthInPixels) => {
+    const coordinate = parentElementLengthInPixels * (pixelPercentage / 100);
+
+    return coordinate;
+}
+
+export { getRenderFunction, getUseAllDataMock, getElementCoordinatePercentage, getCoordinateFromLengthPercentage }
