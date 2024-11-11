@@ -47,6 +47,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     return (
         <>
             <img src="" alt={data.imageAlt} onClick={onImageClick} />
+            <div role="charactermarker"></div>
             <section className="character-selection">
                 { 
                     targetBoxCoordinates && 
