@@ -27,7 +27,7 @@ vi.mock("../src/components/CharacterMarker.jsx", () => ({
                 <div data-testId="charactermarker-coordinate-x">{ coordinates.x }</div>
                 <div data-testId="charactermarker-coordinate-y">{ coordinates.y }</div>
                 <div data-testId="charactermarker-size">{ size }</div>
-                <div data-testId="charactermarker-characterId"></div>
+                <div data-testId="charactermarker-characterId">{ characterId }</div>
             </>
         )
     }
@@ -783,5 +783,93 @@ describe("CharacterMarker", () => {
             .toBeInTheDocument();
         expect(screen.queryByTestId("charactermarker-size"))
             .toBeInTheDocument();
+    })
+
+
+
+    it("Calls charactermarker with correct props", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Alt Text",
+            characters: [
+                {
+                    id: 1,
+                    name: "Comal",
+                },
+                {
+                    id: 2,
+                    name: "quom",
+                }
+            ]
+        });
+
+        const characterMarkerXPercentage = 4;
+        const characterMarkerYPercentage = 8;
+
+        const mockSelectCharacterPositionPost = vi.fn(() => ({
+            success: true,
+            characterId: 4,
+            coordinates: {
+                x: `${characterMarkerXPercentage}%`,
+                y: `${characterMarkerYPercentage}%`,
+            }
+        }));
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
+
+        vi
+        .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
+        .mockImplementation(() => ({
+            width: 500,
+            left: 24,
+            right: 0,
+            height: 96,
+            top: 64,
+            bottom: 0,
+        }))
+
+        const image = screen.queryByAltText("Test Alt Text");
+
+        const user = userEvent.setup();
+        
+        const x = 46;
+        const y = 64;
+
+        await user.pointer({
+            keys: "[MouseLeft]",
+            target: image,
+            coords: { x: x, y: y },
+        })
+
+        const comalButton = screen.queryByText(/quom/i);
+
+        await user.click(comalButton);
+
+        const getCoordinateFromLengthPercentage = (pixelPercentage, parentElementLengthInPixels) => {
+            const coordinate = parentElementLengthInPixels * (pixelPercentage / 100);
+
+            return coordinate;
+        }
+
+        const imageRect = image.getBoundingClientRect();
+
+        const xCoordinateWithinImage = getCoordinateFromLengthPercentage(characterMarkerXPercentage, imageRect.width);
+        const yCoordinateWithinImage = getCoordinateFromLengthPercentage(characterMarkerYPercentage, imageRect.height);
+
+        const xCoordinateElement = screen.queryByTestId("charactermarker-coordinate-x");
+        const yCoordinateElement = screen.queryByTestId("charactermarker-coordinate-y");
+        const characterIdElement = screen.queryByTestId("charactermarker-characterId");
+        const sizeElement = screen.queryByTestId("charactermarker-size");
+
+        expect(xCoordinateElement.textContent)
+            .toBe(`${xCoordinateWithinImage}px`);
+        expect(yCoordinateElement.textContent)
+            .toBe(`${yCoordinateWithinImage}px`);
+        expect(characterIdElement.textContent)
+            .toBe("4");
+        expect(sizeElement.textContent)
+            .toBe("10%");
+
+
     })
 })
