@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import TargetBox from "./TargetBox.jsx";
+import CharacterMarker from "./CharacterMarker.jsx";
 import { getCoordinateAsPercentageOfElementLength } from "../util/MainImageUtils.jsx";
 
 const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
@@ -53,7 +54,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     return (
         <>
             <img src="" alt={data.imageAlt} onClick={onImageClick} />
-            { isCharacterMarkerVisible && <div role="charactermarker"></div> }
+            { isCharacterMarkerVisible && <CharacterMarker coordinates={{}} characterId={5} size={""} />  }
             <section className="character-selection">
                 { 
                     targetBoxCoordinates && 
