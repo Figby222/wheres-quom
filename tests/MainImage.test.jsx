@@ -593,3 +593,7 @@ describe("SelectCharacterPositionPost", () => {
             })
     })
 })
+
+describe("CharacterMarker", () => {
+    
+})
