@@ -661,4 +661,58 @@ describe("CharacterMarker", () => {
         expect(screen.queryByRole("charactermarker"))
             .toBeInTheDocument();
     })
+
+    it("Doesn't render a character marker on unsuccessful marking", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Alt Text",
+            characters: [
+                {
+                    id: 1,
+                    name: "Comal",
+                },
+                {
+                    id: 2,
+                    name: "quom",
+                }
+            ]
+        });
+
+        const mockSelectCharacterPositionPost = vi.fn(() => ({
+            success: false
+        }));
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
+
+        vi
+        .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
+        .mockImplementation(() => ({
+            width: 500,
+            left: 24,
+            right: 0,
+            height: 96,
+            top: 64,
+            bottom: 0,
+        }))
+
+        const image = screen.queryByAltText("Test Alt Text");
+        const user = userEvent.setup();
+
+        const x = 44;
+        const y = 22;
+
+        await user.pointer({
+            keys: "[MouseLeft]",
+            target: image,
+            coords: { x: x, y: y },
+        })
+
+        const comalButton = screen.queryByText(/quom/i);
+
+
+        await user.click(comalButton);
+        
+        expect(screen.queryByRole("charactermarker"))
+            .not.toBeInTheDocument();
+    })
 })
