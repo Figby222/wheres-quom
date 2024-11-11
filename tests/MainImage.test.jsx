@@ -23,11 +23,11 @@ vi.mock("../src/components/CharacterMarker.jsx", () => ({
         console.log(coordinates);
         return (
             <>
-                <div data-test-id="charactermarker" className="character-marker" role="charactermarker"></div>
-                <div data-test-id="charactermarker-coordinate-x">{ coordinates.x }</div>
-                <div data-test-id="charactermarker-coordinate-y">{ coordinates.y }</div>
-                <div data-test-id="charactermarker-size">{ size }</div>
-                <div data-test-id="charactermarker-characterId"></div>
+                <div data-testId="charactermarker" className="character-marker" role="charactermarker"></div>
+                <div data-testId="charactermarker-coordinate-x">{ coordinates.x }</div>
+                <div data-testId="charactermarker-coordinate-y">{ coordinates.y }</div>
+                <div data-testId="charactermarker-size">{ size }</div>
+                <div data-testId="charactermarker-characterId"></div>
             </>
         )
     }
@@ -653,7 +653,7 @@ describe("CharacterMarker", () => {
         }))
         
         const image = screen.queryByAltText("Test Alt Text");
-        
+
         const user = userEvent.setup();
         
         const x = 46;
@@ -726,5 +726,62 @@ describe("CharacterMarker", () => {
         
         expect(screen.queryByRole("charactermarker"))
             .not.toBeInTheDocument();
+    })
+
+    it("Renders CharacterMarker Component", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Alt Text",
+            characters: [
+                {
+                    id: 1,
+                    name: "Comal",
+                },
+                {
+                    id: 2,
+                    name: "quom",
+                }
+            ]
+        });
+
+        const characterMarkerXPercentage = 4;
+        const characterMarkerYPercentage = 8;
+
+        const mockSelectCharacterPositionPost = vi.fn(() => ({
+            success: true,
+            characterId: 4,
+            coordinates: {
+                x: `${characterMarkerXPercentage}%`,
+                y: `${characterMarkerYPercentage}%`,
+            }
+        }));
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
+
+        const image = screen.queryByAltText("Test Alt Text");
+
+        const user = userEvent.setup();
+        
+        const x = 46;
+        const y = 64;
+
+        await user.pointer({
+            keys: "[MouseLeft]",
+            target: image,
+            coords: { x: x, y: y },
+        })
+
+        const comalButton = screen.queryByText(/quom/i);
+
+        await user.click(comalButton);
+
+        expect(screen.queryByTestId("charactermarker-coordinate-x"))
+            .toBeInTheDocument();
+        expect(screen.queryByTestId("charactermarker-coordinate-y"))
+            .toBeInTheDocument();
+        expect(screen.queryByTestId("charactermarker-characterId"))
+            .toBeInTheDocument();
+        expect(screen.queryByTestId("charactermarker-size"))
+            .toBeInTheDocument();
     })
 })
