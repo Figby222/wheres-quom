@@ -956,4 +956,131 @@ describe("CharacterMarker", () => {
         expect(sizeElement.textContent)
             .toBe("10%");
     })
+
+    it("Can render multiple charactermarkers", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Alt Text",
+            characters: [
+                {
+                    id: 3,
+                    name: "Comal",
+                },
+                {
+                    id: 4,
+                    name: "quom",
+                }
+            ]
+        });
+
+        const character4MarkerXPercentage = 4;
+        const character4MarkerYPercentage = 8;
+
+        const character3MarkerXPercentage = 1;
+        const character3MarkerYPercentage = 2;
+
+        const mockSelectCharacterPositionPost = vi.fn((characterId) => {
+            if (characterId === 4) {
+                return {
+                    success: true,
+                    characterId: 4,
+                    coordinates: {
+                        x: `${character4MarkerXPercentage}%`,
+                        y: `${character4MarkerYPercentage}%`,
+                    }
+                }
+            }
+
+            return {
+                success: true,
+                characterId: 3,
+                coordinates: {
+                    x: `${character3MarkerXPercentage}%`,
+                    y: `${character3MarkerYPercentage}%`
+                }
+            }
+        });
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
+
+        vi
+        .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
+        .mockImplementation(() => ({
+            width: 4646,
+            left: 24,
+            right: 0,
+            height: 164,
+            top: 64,
+            bottom: 0,
+        }))
+
+        const image = screen.queryByAltText("Test Alt Text");
+
+        const user = userEvent.setup();
+        
+        const targetX1 = 64;
+        const targetY1 = 46;
+        
+        await user.pointer({
+            keys: "[MouseLeft]",
+            target: image,
+            coords: { x: targetX1, y: targetY1 },
+        })
+        
+        const comalButton = screen.queryByText(/Comal/i);
+        
+        await user.click(comalButton);
+        
+        const targetX2 = 46;
+        const targetY2 = 64;
+        
+        await user.pointer({
+            keys: "[MouseLeft]",
+            target: image,
+            coords: { x: targetX2, y: targetY2 }
+        })
+        
+        const quomButton = screen.queryByText(/quom/i);
+        
+        await user.click(quomButton);
+
+        const getCoordinateFromLengthPercentage = (pixelPercentage, parentElementLengthInPixels) => {
+            const coordinate = parentElementLengthInPixels * (pixelPercentage / 100);
+
+            return coordinate;
+        }
+
+        const imageRect = image.getBoundingClientRect();
+
+        const character4XCoordinateWithinImage = getCoordinateFromLengthPercentage(character4MarkerXPercentage, imageRect.width);
+        const character4YCoordinateWithinImage = getCoordinateFromLengthPercentage(character4MarkerYPercentage, imageRect.height);
+
+        const character3XCoordinateWithinImage = getCoordinateFromLengthPercentage(character3MarkerXPercentage, imageRect.width);
+        const character3YCoordinateWithinImage = getCoordinateFromLengthPercentage(character3MarkerYPercentage, imageRect.height);
+
+        const xCoordinateElements = screen.queryAllByTestId("charactermarker-coordinate-x");
+        const yCoordinateElements = screen.queryAllByTestId("charactermarker-coordinate-y");
+        const characterIdElements = screen.queryAllByTestId("charactermarker-characterId");
+        const sizeElements = screen.queryAllByTestId("charactermarker-size");
+
+
+
+        expect(xCoordinateElements[0].textContent)
+            .toBe(`${character3XCoordinateWithinImage}px`);
+        expect(yCoordinateElements[0].textContent)
+            .toBe(`${character3YCoordinateWithinImage}px`);
+        expect(characterIdElements[0].textContent)
+            .toBe("3");
+        expect(sizeElements[0].textContent)
+            .toBe("10%");
+        
+        expect(xCoordinateElements[1].textContent)
+            .toBe(`${character4XCoordinateWithinImage}px`);
+        expect(yCoordinateElements[1].textContent)
+            .toBe(`${character4YCoordinateWithinImage}px`);
+        expect(characterIdElements[1].textContent)
+            .toBe("4");
+        expect(sizeElements[1].textContent)
+            .toBe("10%");
+    })
 })
