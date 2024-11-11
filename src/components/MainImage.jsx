@@ -54,7 +54,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     return (
         <>
             <img src="" alt={data.imageAlt} onClick={onImageClick} />
-            { isCharacterMarkerVisible && <CharacterMarker coordinates={{}} characterId={5} size={""} />  }
+            { isCharacterMarkerVisible && <CharacterMarker coordinates={{ x: "20px", y: "7.68px" }} characterId={4} size={"10%"} />  }
             <section className="character-selection">
                 { 
                     targetBoxCoordinates && 
