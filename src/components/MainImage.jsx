@@ -7,8 +7,7 @@ import { getCoordinateAsPercentageOfElementLength, getCoordinateFromLengthPercen
 const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     const { error, loading, data } = useAllData();
     const [ targetBoxCoordinates, setTargetBoxCoordinates ] = useState(null);
-    const [ isCharacterMarkerVisible, setIsCharacterMarkerVisible ] = useState(false);
-    const [ characterMarker, setCharacterMarker ] = useState(null);
+    const [ characterMarkers, setCharacterMarkers ] = useState([]);
 
     if (loading) {
         return (<p className="loading">Loading...</p>)
@@ -59,24 +58,31 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
                 parseInt(response.coordinates.y.replace("%", "")),
                 imageRect.height
             )
-            setIsCharacterMarkerVisible(true);
-            setCharacterMarker({ 
-                characterId: response.characterId, 
-                x: xCoordinateWithinImage, 
-                y: yCoordinateWithinImage, 
-            })
+            setCharacterMarkers([
+                ...characterMarkers,
+                { 
+                    characterId: response.characterId, 
+                    x: xCoordinateWithinImage, 
+                    y: yCoordinateWithinImage, 
+                }
+            ])
         }
     }
 
     return (
         <>
             <img src="" alt={data.imageAlt} onClick={onImageClick} />
-            { isCharacterMarkerVisible && 
-                <CharacterMarker 
-                    coordinates={{ x: `${characterMarker.x}px`, y: `${characterMarker.y}px` }} 
-                    characterId={characterMarker.characterId} 
-                    size={"10%"} 
-                />  
+            {
+                characterMarkers.map((characterMarker) => {
+                    return <CharacterMarker
+                        coordinates={{ 
+                            x: `${characterMarker.x}px`,
+                            y: `${characterMarker.y}px`
+                        }}
+                        characterId={characterMarker.characterId}
+                        size={"10%"}
+                    />
+                })
             }
             <section className="character-selection">
                 { 
