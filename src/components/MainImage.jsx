@@ -72,38 +72,38 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     return (
         <>
             <img src="" alt={data.imageAlt} onClick={onImageClick} useMap={"main_image"} />
-            <map name="main_image">
-                {
-                    characterMarkers.map((characterMarker) => {
-                        return <CharacterMarker
-                            coordinates={{ 
-                                x: `${characterMarker.x}px`,
-                                y: `${characterMarker.y}px`
-                            }}
-                            characterId={characterMarker.characterId}
-                            size={"10%"}
-                        />
-                    })
-                }
-            </map>
-            <section className="character-selection">
-                { 
-                    targetBoxCoordinates && 
-                    <>
-                        <TargetBox coordinates={targetBoxCoordinates} size="" /> 
-                        <ul className="character-selection-ul">
-                            { data.characters.map((character) => {
-                                return <li key={character.id} className="select-character">
-                                    <button type="button" onClick={(e) => onCharacterPositionSubmission(e, character.id)}>
-                                        { character.name }
-                                    </button>
-                                </li>
-                            })}
-                        </ul>
-                    </>
-                }
-            </section>
-        </>
+                <map name="main_image">
+                    {
+                        characterMarkers.map((characterMarker) => {
+                            return <CharacterMarker
+                                coordinates={{ 
+                                    x: `${characterMarker.x}px`,
+                                    y: `${characterMarker.y}px`
+                                }}
+                                characterId={characterMarker.characterId}
+                                size={"10%"}
+                            />
+                        })
+                    }
+                    <section className="character-selection">
+                        { 
+                            targetBoxCoordinates && 
+                            <>
+                                <TargetBox coordinates={targetBoxCoordinates} size="" /> 
+                                <ul className="character-selection-ul">
+                                    { data.characters.map((character) => {
+                                        return <li key={character.id} className="select-character">
+                                            <button type="button" onClick={(e) => onCharacterPositionSubmission(e, character.id)}>
+                                                { character.name }
+                                            </button>
+                                        </li>
+                                    })}
+                                </ul>
+                            </>
+                        }
+                    </section>
+                </map>
+            </>
     )
 };
 
