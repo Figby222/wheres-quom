@@ -7,7 +7,8 @@ import { getCoordinateAsPercentageOfElementLength, getCoordinateFromLengthPercen
 const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     const { error, loading, data } = useAllData();
     const [ targetBoxCoordinates, setTargetBoxCoordinates ] = useState(null);
-    const [ characterMarkers, setCharacterMarkers ] = useState([]);
+    const [ characterMarkers, setCharacterMarkers ] = useState([]);\
+    console.log("11:11");
 
     if (loading) {
         return (<p className="loading">Loading...</p>)
