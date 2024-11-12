@@ -71,19 +71,21 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
 
     return (
         <>
-            <img src="" alt={data.imageAlt} onClick={onImageClick} />
-            {
-                characterMarkers.map((characterMarker) => {
-                    return <CharacterMarker
-                        coordinates={{ 
-                            x: `${characterMarker.x}px`,
-                            y: `${characterMarker.y}px`
-                        }}
-                        characterId={characterMarker.characterId}
-                        size={"10%"}
-                    />
-                })
-            }
+            <img src="" alt={data.imageAlt} onClick={onImageClick} useMap={"main_image"} />
+            <map name="main_image">
+                {
+                    characterMarkers.map((characterMarker) => {
+                        return <CharacterMarker
+                            coordinates={{ 
+                                x: `${characterMarker.x}px`,
+                                y: `${characterMarker.y}px`
+                            }}
+                            characterId={characterMarker.characterId}
+                            size={"10%"}
+                        />
+                    })
+                }
+            </map>
             <section className="character-selection">
                 { 
                     targetBoxCoordinates && 
