@@ -11,6 +11,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     console.log("11:11");
 
     if (loading) {
+        console.log("Loading");
         return (<p className="loading">Loading...</p>)
     }
 
