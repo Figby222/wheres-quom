@@ -11,6 +11,8 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
     const [ userDidWin, setUserDidWin ] = useState(false);
     console.log("11:11");
 
+    submitScorePut();
+
     if (loading) {
         console.log("Loading");
         return (<p className="loading">Loading...</p>)
