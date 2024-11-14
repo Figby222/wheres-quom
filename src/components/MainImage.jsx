@@ -25,7 +25,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
     const onWinnerFormSubmission = async (e) => {
         e.preventDefault();
 
-        submitScorePut();
+        submitScorePut("Test Name");
     }
 
     const onCharacterPositionSubmission = (e, characterId) => {
