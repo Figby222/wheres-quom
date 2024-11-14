@@ -4,7 +4,7 @@ import TargetBox from "./TargetBox.jsx";
 import CharacterMarker from "./CharacterMarker.jsx";
 import { getCoordinateAsPercentageOfElementLength, getCoordinateFromLengthPercentage } from "../util/MainImageUtils.jsx";
 
-const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
+const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) => {
     const { error, loading, data } = useAllData();
     const [ targetBoxCoordinates, setTargetBoxCoordinates ] = useState(null);
     const [ characterMarkers, setCharacterMarkers ] = useState([]);
@@ -127,6 +127,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
 MainImage.propTypes = {
     useAllData: PropTypes.func.isRequired,
     selectCharacterPositionPost: PropTypes.func.isRequired,
+    submitScorePut: PropTypes.func.isRequired,
 }
 
 export default MainImage;
