@@ -1207,7 +1207,7 @@ describe("High Score Form", () => {
 
         await user.click(comalButton);
 
-        expect(screen.queryByLabelText(/Name/i))
+        expect(screen.queryByRole("textbox", { name: /Name/i }))
             .toBeInTheDocument();
     })
 
@@ -1266,7 +1266,7 @@ describe("High Score Form", () => {
 
         await user.click(comalButton);
 
-        expect(screen.queryByLabelText(/Name/i))
+        expect(screen.queryByRole("textbox", { name: /Name/i }))
             .not.toBeInTheDocument();
     })
 
