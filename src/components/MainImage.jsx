@@ -72,6 +72,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
 
     return (
         <>
+            <p className="name">Name</p>
             <img src="" alt={data.imageAlt} onClick={onImageClick} useMap={"main_image"} />
                 <map name="main_image">
                     {
