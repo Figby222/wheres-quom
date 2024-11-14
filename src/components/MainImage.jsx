@@ -80,12 +80,14 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
         <>
             {
                 userDidWin &&
-                <label htmlFor="name">
-                    Name:
-                    <input type="text" name="name" id="name" />
-                </label>
+                <>
+                    <label htmlFor="name">
+                        Name:
+                        <input type="text" name="name" id="name" />
+                    </label>
+                    <button type="submit">Submit</button>
+                </>
             }
-            <button type="submit">Submit</button>
             <img src="" alt={data.imageAlt} onClick={onImageClick} useMap={"main_image"} />
                 <map name="main_image">
                     {
