@@ -8,6 +8,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
     const { error, loading, data } = useAllData();
     const [ targetBoxCoordinates, setTargetBoxCoordinates ] = useState(null);
     const [ characterMarkers, setCharacterMarkers ] = useState([]);
+    const [ userDidWin, setUserDidWin ] = useState(false);
     console.log("11:11");
 
     if (loading) {
@@ -69,14 +70,21 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
                 }
             ])
         }
+
+        if (response.highScore !== undefined) {
+            setUserDidWin(true);
+        }
     }
 
     return (
         <>
-            <label htmlFor="name">
-                Name:
-                <input type="text" name="name" id="name" />
-            </label>
+            {
+                userDidWin &&
+                <label htmlFor="name">
+                    Name:
+                    <input type="text" name="name" id="name" />
+                </label>
+            }
             <img src="" alt={data.imageAlt} onClick={onImageClick} useMap={"main_image"} />
                 <map name="main_image">
                     {
