@@ -9,6 +9,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
     const [ targetBoxCoordinates, setTargetBoxCoordinates ] = useState(null);
     const [ characterMarkers, setCharacterMarkers ] = useState([]);
     const [ userDidWin, setUserDidWin ] = useState(false);
+    const [ userName, setUserName ] = useState("");
     console.log("11:11");
 
     if (loading) {
@@ -24,8 +25,8 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
 
     const onWinnerFormSubmission = async (e) => {
         e.preventDefault();
-
-        submitScorePut("Test Name");
+        
+        submitScorePut(userName);
     }
 
     const onCharacterPositionSubmission = (e, characterId) => {
@@ -88,7 +89,11 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
                 <form method="PUT" onSubmit={onWinnerFormSubmission} hidden={!userDidWin}>
                     <label htmlFor="name" hidden={!userDidWin}>
                         Name:
-                        <input type="text" name="name" id="name" hidden={!userDidWin} />
+                        <input type="text" name="name" id="name" 
+                            value={userName} 
+                            onChange={(e) => setUserName(e.target.value)} 
+                            hidden={!userDidWin} 
+                        />
                     </label>
                     <button type="submit" hidden={!userDidWin}>Submit</button>
                 </form>
