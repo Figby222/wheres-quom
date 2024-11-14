@@ -91,24 +91,24 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
                             />
                         })
                     }
-                    <section className="character-selection">
-                        { 
-                            targetBoxCoordinates && 
-                            <>
-                                <TargetBox coordinates={targetBoxCoordinates} size="" /> 
-                                <ul className="character-selection-ul">
-                                    { data.characters.map((character) => {
-                                        return <li key={character.id} className="select-character">
-                                            <button type="button" onClick={(e) => onCharacterPositionSubmission(e, character.id)}>
-                                                { character.name }
-                                            </button>
-                                        </li>
-                                    })}
-                                </ul>
-                            </>
-                        }
-                    </section>
                 </map>
+                <section className="character-selection">
+                    { 
+                        targetBoxCoordinates && 
+                        <>
+                            <TargetBox coordinates={targetBoxCoordinates} size="" /> 
+                            <ul className="character-selection-ul">
+                                { data.characters.map((character) => {
+                                    return <li key={character.id} className="select-character">
+                                        <button type="button" onClick={(e) => onCharacterPositionSubmission(e, character.id)}>
+                                            { character.name }
+                                        </button>
+                                    </li>
+                                })}
+                            </ul>
+                        </>
+                    }
+                </section>
             </>
     )
 };
