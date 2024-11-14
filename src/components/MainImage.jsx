@@ -85,6 +85,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost }) => {
                     <input type="text" name="name" id="name" />
                 </label>
             }
+            <button type="submit">Submit</button>
             <img src="" alt={data.imageAlt} onClick={onImageClick} useMap={"main_image"} />
                 <map name="main_image">
                     {
