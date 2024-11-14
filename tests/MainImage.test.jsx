@@ -1331,4 +1331,72 @@ describe("High Score Form", () => {
         expect(screen.queryByRole("button", { name: /Submit/i }))
             .toBeInTheDocument();
     })
+
+    it("Only renders submit button on win", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Alt Text",
+            characters: [
+                {
+                    id: 1,
+                    name: "Comal",
+                },
+                {
+                    id: 2,
+                    name: "quom",
+                }
+            ]
+        });
+
+        const mockSelectCharacterPositionPost = vi.fn(() => ({
+            success: true,
+            characterId: 4,
+            coordinates: {
+                x: "4%",
+                y: "8%",
+            }
+        }));
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} />);
+        vi
+        .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
+        .mockImplementation(() => ({
+            width: 500,
+            left: 24,
+            right: 0,
+            height: 96,
+            top: 64,
+            bottom: 0,
+        }))
+        const image = screen.queryByAltText("Test Alt Text");
+        const user = userEvent.setup();
+        
+        const x = 46;
+        const y = 64;
+
+        await user.pointer({
+            keys: "[MouseLeft]",
+            target: image,
+            coords: { x: x, y: y },
+        })
+
+
+
+        const comalButton = screen.queryByText(/quom/i);
+
+
+        await user.click(comalButton);
+
+        
+
+        expect(screen.queryByRole("button", { name: /Submit/i }))
+            .not.toBeInTheDocument();
+
+
+
+
+
+
+            
+    })
 })
