@@ -78,16 +78,13 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
 
     return (
         <>
-            {
-                userDidWin &&
-                <>
-                    <label htmlFor="name">
-                        Name:
-                        <input type="text" name="name" id="name" />
-                    </label>
-                    <button type="submit">Submit</button>
-                </>
-            }
+            <dialog open={userDidWin}>
+                <label htmlFor="name">
+                    Name:
+                    <input type="text" name="name" id="name" />
+                </label>
+                <button type="submit">Submit</button>
+            </dialog>
             <img src="" alt={data.imageAlt} onClick={onImageClick} useMap={"main_image"} />
                 <map name="main_image">
                     {
