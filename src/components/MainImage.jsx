@@ -11,8 +11,6 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
     const [ userDidWin, setUserDidWin ] = useState(false);
     console.log("11:11");
 
-    submitScorePut();
-
     if (loading) {
         console.log("Loading");
         return (<p className="loading">Loading...</p>)
@@ -22,6 +20,12 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
         e.preventDefault();
 
         setTargetBoxCoordinates({ x: e.clientX, y: e.clientY })
+    }
+
+    const onWinnerFormSubmission = async (e) => {
+        e.preventDefault();
+
+        submitScorePut();
     }
 
     const onCharacterPositionSubmission = (e, characterId) => {
@@ -81,7 +85,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
     return (
         <>
             <dialog open={userDidWin} hidden={!userDidWin}>
-                <form method="PUT" hidden={!userDidWin}>
+                <form method="PUT" onSubmit={onWinnerFormSubmission} hidden={!userDidWin}>
                     <label htmlFor="name" hidden={!userDidWin}>
                         Name:
                         <input type="text" name="name" id="name" hidden={!userDidWin} />
