@@ -97,7 +97,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
                         />
                     </label>
                     <button type="submit" hidden={!userDidWin}>Submit</button>
-                </form>
+                </form>a
             </dialog>
             <img src="" alt={data.imageAlt} onClick={onImageClick} useMap={"main_image"} />
                 <map name="main_image">
