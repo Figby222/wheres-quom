@@ -73,6 +73,7 @@ describe("Image loading", () => {
         const mockUseAllData = getUseAllDataMock(false, false, {
             imageSrc: "/",
             characters: [],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({}));
@@ -88,6 +89,7 @@ describe("Image loading", () => {
             imageSrc: "/",
             imageAlt: "Test Alt Text",
             characters: [],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({}));
@@ -106,6 +108,7 @@ describe("Image loading", () => {
             imageSrc: "/",
             imageAlt: "Test Different Alt Text",
             characters: [],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({}));
@@ -130,7 +133,8 @@ describe("Clicking the image", () => {
                     id: 1,
                     name: "quom"
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({}));
@@ -155,7 +159,8 @@ describe("Clicking the image", () => {
                     id: 1,
                     name: "Comal"
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({}));
@@ -184,7 +189,8 @@ describe("Clicking the image", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({}));
@@ -213,7 +219,8 @@ describe("Clicking the image", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({}));
@@ -241,7 +248,8 @@ describe("Clicking the image", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({}));
@@ -271,7 +279,8 @@ describe("Clicking the image", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({}));
@@ -301,7 +310,8 @@ describe("Target Box", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({}));
@@ -348,7 +358,8 @@ describe("Target Box", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({}));
@@ -401,7 +412,8 @@ describe("SelectCharacterPositionPost", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({}));
@@ -440,7 +452,8 @@ describe("SelectCharacterPositionPost", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({}));
@@ -475,7 +488,8 @@ describe("SelectCharacterPositionPost", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({}));
@@ -546,7 +560,8 @@ describe("SelectCharacterPositionPost", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({}));
@@ -627,7 +642,8 @@ describe("CharacterMarker", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({
@@ -687,7 +703,8 @@ describe("CharacterMarker", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({
@@ -741,7 +758,8 @@ describe("CharacterMarker", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const characterMarkerXPercentage = 4;
@@ -800,7 +818,8 @@ describe("CharacterMarker", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const characterMarkerXPercentage = 4;
@@ -886,7 +905,8 @@ describe("CharacterMarker", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const characterMarkerXPercentage = 46;
@@ -970,7 +990,8 @@ describe("CharacterMarker", () => {
                     id: 4,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const character4MarkerXPercentage = 4;
@@ -1099,7 +1120,8 @@ describe("High Score Form", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({
@@ -1160,7 +1182,8 @@ describe("High Score Form", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({
@@ -1224,7 +1247,8 @@ describe("High Score Form", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({
@@ -1283,7 +1307,8 @@ describe("High Score Form", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         
@@ -1345,7 +1370,8 @@ describe("High Score Form", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         const mockSelectCharacterPositionPost = vi.fn(() => ({
@@ -1416,7 +1442,8 @@ describe("submitScorePut", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         
@@ -1485,7 +1512,8 @@ describe("submitScorePut", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         
@@ -1552,7 +1580,8 @@ describe("submitScorePut", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         
@@ -1625,7 +1654,8 @@ describe("submitScorePut", () => {
                     id: 2,
                     name: "quom",
                 }
-            ]
+            ],
+            leaderboardPlayers: [],
         });
 
         
@@ -1709,11 +1739,12 @@ describe("Leaderboard", () => {
                     name: "quom",
                     completionTime: "24:46",
                 },
-            ]
+            ],
         });
 
         
 
+        
         const mockSelectCharacterPositionPost = vi.fn(() => ({
             highScore: true,
             success: true,
@@ -1922,6 +1953,7 @@ describe("Leaderboard", () => {
 
         expect(within(leaderboard).queryByText("46:46"))
             .toBeInTheDocument();
+            
             
     })
 })

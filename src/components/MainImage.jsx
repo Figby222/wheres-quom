@@ -85,7 +85,10 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
 
     return (
         <>
-            <section className="leaderboard" aria-label="leaderboard">24:46</section>
+            <section className="leaderboard" aria-label="leaderboard">
+                <p className="score">24:46</p>
+                <p className="score">46:46</p>
+            </section>a
             <dialog open={userDidWin} hidden={!userDidWin}>
                 <form method="PUT" onSubmit={onWinnerFormSubmission} hidden={!userDidWin}>
                     <label htmlFor="name" hidden={!userDidWin}>
@@ -94,7 +97,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
                             value={userName} 
                             onChange={(e) => setUserName(e.target.value)} 
                             hidden={!userDidWin} 
-                        />
+                        />a
                     </label>
                     <button type="submit" hidden={!userDidWin}>Submit</button>
                 </form>a
