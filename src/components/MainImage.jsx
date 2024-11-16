@@ -94,7 +94,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
                             value={userName} 
                             onChange={(e) => setUserName(e.target.value)} 
                             hidden={!userDidWin} 
-                        />
+                        />a
                     </label>
                     <button type="submit" hidden={!userDidWin}>Submit</button>
                 </form>a
