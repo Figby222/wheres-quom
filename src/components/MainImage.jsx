@@ -85,7 +85,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
 
     return (
         <>
-            <section className="leaderboard" aria-label="leaderboard">24:46</section>
+            <section className="leaderboard" aria-label="leaderboard">24:46</section>a
             <dialog open={userDidWin} hidden={!userDidWin}>
                 <form method="PUT" onSubmit={onWinnerFormSubmission} hidden={!userDidWin}>
                     <label htmlFor="name" hidden={!userDidWin}>
