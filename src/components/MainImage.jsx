@@ -11,6 +11,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
     const [ userDidWin, setUserDidWin ] = useState(false);
     const [ userName, setUserName ] = useState("");
     console.log("11:11");
+    const [ leaderboardPlayers, setLeaderboardPlayers ] = useState(data && data.leaderboardPlayers ? data.leaderboardPlayers : []);
 
     if (loading) {
         console.log("Loading");
@@ -86,8 +87,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
     return (
         <>
             <section className="leaderboard" aria-label="leaderboard">
-                <p className="score">24:46</p>
-                <p className="score">46:46</p>
+                <p className="score">{ leaderboardPlayers.length > 0 && leaderboardPlayers[0].completionTime }</p>
             </section>a
             <dialog open={userDidWin} hidden={!userDidWin}>
                 <form method="PUT" onSubmit={onWinnerFormSubmission} hidden={!userDidWin}>
