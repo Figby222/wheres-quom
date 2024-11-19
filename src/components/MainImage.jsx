@@ -101,7 +101,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
             </dialog>
             <img src="" alt={data.imageAlt} onClick={onImageClick} useMap={"main_image"} />
                 <map name="main_image">
-                    {
+                    a{
                         characterMarkers.map((characterMarker) => {
                             return <CharacterMarker
                                 coordinates={{ 
