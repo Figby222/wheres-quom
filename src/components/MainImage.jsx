@@ -12,6 +12,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
     const [ userName, setUserName ] = useState("");
     console.log("11:11");
     const [ leaderboardPlayers, setLeaderboardPlayers ] = useState(data && data.leaderboardPlayers ? data.leaderboardPlayers : []);
+    const [ isLeaderboardVisible, setIsLeaderboardVisible ] = useState(false);
 
     if (loading) {
         console.log("Loading");
@@ -28,6 +29,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
         e.preventDefault();
         
         submitScorePut(userName);
+        setIsLeaderboardVisible(true);
     }
 
     const onCharacterPositionSubmission = (e, characterId) => {
@@ -86,9 +88,12 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
 
     return (
         <>
+        {
+            isLeaderboardVisible &&
             <section className="leaderboard" aria-label="leaderboard">
                 <p className="score">{ leaderboardPlayers.length > 0 && leaderboardPlayers[0].completionTime }</p>
-            </section>a
+            </section>
+        }a
             <dialog open={userDidWin} hidden={!userDidWin}>
                 <form method="PUT" onSubmit={onWinnerFormSubmission} hidden={!userDidWin}>
                     <label htmlFor="name" hidden={!userDidWin}>
@@ -118,7 +123,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
                     }
                 </map>
                 <section className="character-selection">
-                    { 
+                    a{ 
                         targetBoxCoordinates && 
                         <>
                             <TargetBox coordinates={targetBoxCoordinates} size="" /> 
