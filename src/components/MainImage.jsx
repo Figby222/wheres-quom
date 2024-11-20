@@ -115,7 +115,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
                     }
                 </map>
                 <section className="character-selection">
-                    { 
+                    a{ 
                         targetBoxCoordinates && 
                         <>
                             <TargetBox coordinates={targetBoxCoordinates} size="" /> 
