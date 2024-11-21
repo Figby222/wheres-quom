@@ -13,6 +13,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
     console.log("11:11");
     const [ leaderboardPlayers, setLeaderboardPlayers ] = useState(data && data.leaderboardPlayers ? data.leaderboardPlayers : []);
     const [ isLeaderboardVisible, setIsLeaderboardVisible ] = useState(false);
+    const [ gameError, setGameError ] = useState(null);
 
     if (loading) {
         console.log("Loading");
@@ -31,6 +32,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
         const response = submitScorePut(userName);
 
         if (response.status === 403) {
+            setGameError("You must finish the game before submitting your score");
             return;
         }
 
@@ -94,7 +96,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
     return (
         <>
         <section>
-            <p>You must finish the game before submitting your score</p>
+            <p>{ gameError }</p>
         </section>
         {
             isLeaderboardVisible &&
