@@ -28,7 +28,12 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
     const onWinnerFormSubmission = async (e) => {
         e.preventDefault();
         
-        submitScorePut(userName);
+        const response = submitScorePut(userName);
+
+        if (response.status === 403) {
+            return;
+        }
+
         setIsLeaderboardVisible(true);
     }
 
@@ -88,6 +93,9 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
 
     return (
         <>
+        <section>
+            <p>You must finish the game before submitting your score</p>
+        </section>
         {
             isLeaderboardVisible &&
             <section className="leaderboard" aria-label="leaderboard">
