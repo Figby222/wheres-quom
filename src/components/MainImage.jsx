@@ -114,6 +114,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
         }a
             <dialog open={userDidWin} hidden={!userDidWin}>
                 <form method="PUT" onSubmit={onWinnerFormSubmission} hidden={!userDidWin} aria-label="winner form">
+                    <p>Test Form Error Message</p>
                     <label htmlFor="name" hidden={!userDidWin}>
                         Name:
                         <input type="text" name="name" id="name" 
