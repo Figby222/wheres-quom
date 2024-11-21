@@ -2303,93 +2303,180 @@ describe("Winner submission errors", () => {
         expect(screen.queryByText(/You must finish the game before submitting your score/i))
             .toBeInTheDocument();
     })
-})
 
-it("Doesn't show error message on successful submission", async () => {
-    const mockUseAllData = getUseAllDataMock(false, false, {
-        imageSrc: "/",
-        imageAlt: "Test Alt Text",
-        characters: [
-            {
-                id: 1,
-                name: "Comal",
-            },
-            {
-                id: 2,
-                name: "quom",
-            }
-        ],
-        leaderboardPlayers: [
-            {
-                id: 3,
-                name: "Comal",
-                completionTime: "24:24"
-            },
-            {
-                id: 4,
-                name: "quom",
-                completionTime: "46:46"
-            }
-        ]
-    });
 
-    
-
-    const mockSelectCharacterPositionPost = vi.fn(() => ({
-        highScore: true,
-        success: true,
-        characterId: 4,
-        coordinates: {
-            x: "4%",
-            y: "8%",
-        }
-    }));
-    
-    const mockSubmitScorePut = vi.fn(() => ({
-        status: 200
-    }))
-
-    render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={mockSubmitScorePut} />);
+    it("Doesn't show error message on successful submission", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Alt Text",
+            characters: [
+                {
+                    id: 1,
+                    name: "Comal",
+                },
+                {
+                    id: 2,
+                    name: "quom",
+                }
+            ],
+            leaderboardPlayers: [
+                {
+                    id: 3,
+                    name: "Comal",
+                    completionTime: "24:24"
+                },
+                {
+                    id: 4,
+                    name: "quom",
+                    completionTime: "46:46"
+                }
+            ]
+        });
 
         
 
-    vi
-    .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
-    .mockImplementation(() => ({
-        width: 500,
-        left: 24,
-        right: 0,
-        height: 96,
-        top: 64,
-        bottom: 0,
-    }))
-    const image = screen.queryByAltText("Test Alt Text");
+        const mockSelectCharacterPositionPost = vi.fn(() => ({
+            highScore: true,
+            success: true,
+            characterId: 4,
+            coordinates: {
+                x: "4%",
+                y: "8%",
+            }
+        }));
+        
+        const mockSubmitScorePut = vi.fn(() => ({
+            status: 200,
+            errors: [
+                {
+                    path: "name",
+                    msg: "Test Form Error Message"
+                }
+            ]
+        }))
 
-    const user = userEvent.setup();
-    
-    const x = 46;
-    const y = 64;
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={mockSubmitScorePut} />);
 
-    await user.pointer({
-        keys: "[MouseLeft]",
-        target: image,
-        coords: { x: x, y: y },
+            
+
+        vi
+        .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
+        .mockImplementation(() => ({
+            width: 500,
+            left: 24,
+            right: 0,
+            height: 96,
+            top: 64,
+            bottom: 0,
+        }))
+        const image = screen.queryByAltText("Test Alt Text");
+
+        const user = userEvent.setup();
+        
+        const x = 46;
+        const y = 64;
+
+        await user.pointer({
+            keys: "[MouseLeft]",
+            target: image,
+            coords: { x: x, y: y },
+        })
+
+        const comalButton = screen.queryByText(/quom/i);
+
+
+        await user.click(comalButton);
+        
+        const nameInput = screen.queryByRole("textbox", { name: /Name/i });
+
+        await user.type(nameInput, "Test Name");
+
+        const submitButton = screen.queryByRole("button", { name: /Submit/i });
+
+
+        await user.click(submitButton);
+
+        expect(screen.queryByText(/You must finish the game before submitting your score/i))
+            .not.toBeInTheDocument();
     })
 
-    const comalButton = screen.queryByText(/quom/i);
+    it("Renders form with winner form label", async () => {
+        const mockUseAllData = getUseAllDataMock(false, false, {
+            imageSrc: "/",
+            imageAlt: "Test Alt Text",
+            characters: [
+                {
+                    id: 1,
+                    name: "Comal",
+                },
+                {
+                    id: 2,
+                    name: "quom",
+                }
+            ],
+            leaderboardPlayers: [
+                {
+                    id: 3,
+                    name: "Comal",
+                    completionTime: "24:24"
+                },
+                {
+                    id: 4,
+                    name: "quom",
+                    completionTime: "46:46"
+                }
+            ]
+        });
 
+        
 
-    await user.click(comalButton);
+        const mockSelectCharacterPositionPost = vi.fn(() => ({
+            highScore: true,
+            success: true,
+            characterId: 4,
+            coordinates: {
+                x: "4%",
+                y: "8%",
+            }
+        }));
+        
+        const mockSubmitScorePut = vi.fn(() => ({
+            status: 400
+        }))
+
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={mockSubmitScorePut} />);
+
+            
     
-    const nameInput = screen.queryByRole("textbox", { name: /Name/i });
+        vi
+        .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
+        .mockImplementation(() => ({
+            width: 500,
+            left: 24,
+            right: 0,
+            height: 96,
+            top: 64,
+            bottom: 0,
+        }))
+        const image = screen.queryByAltText("Test Alt Text");
+    
+        const user = userEvent.setup();
+        
+        const x = 46;
+        const y = 64;
+    
+        await user.pointer({
+            keys: "[MouseLeft]",
+            target: image,
+            coords: { x: x, y: y },
+        })
+    
+        const comalButton = screen.queryByText(/quom/i);
+    
+    
+        await user.click(comalButton);
 
-    await user.type(nameInput, "Test Name");
-
-    const submitButton = screen.queryByRole("button", { name: /Submit/i });
-
-
-    await user.click(submitButton);
-
-    expect(screen.queryByText(/You must finish the game before submitting your score/i))
-        .not.toBeInTheDocument();
+        expect(screen.queryByLabelText("winner form"))
+            .toBeInTheDocument();
+    })
 })
