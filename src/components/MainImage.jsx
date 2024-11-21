@@ -113,7 +113,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
             </section>
         }a
             <dialog open={userDidWin} hidden={!userDidWin}>
-                <form method="PUT" onSubmit={onWinnerFormSubmission} hidden={!userDidWin}>
+                <form method="PUT" onSubmit={onWinnerFormSubmission} hidden={!userDidWin} aria-label="winner form">
                     <label htmlFor="name" hidden={!userDidWin}>
                         Name:
                         <input type="text" name="name" id="name" 
