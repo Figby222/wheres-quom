@@ -91,7 +91,15 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
         {
             isLeaderboardVisible &&
             <section className="leaderboard" aria-label="leaderboard">
-                <p className="score">{ leaderboardPlayers.length > 0 && leaderboardPlayers[0].completionTime }</p>
+                <ul>
+                    {
+                        leaderboardPlayers.map((player) => {
+                            return <li key={player.id}>
+                                { player.completionTime }
+                            </li>
+                        })
+                    }
+                </ul>
             </section>
         }a
             <dialog open={userDidWin} hidden={!userDidWin}>
@@ -137,7 +145,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
                                 })}
                             </ul>
                         </>
-                    }
+                    }a
                 </section>
             </>
     )
