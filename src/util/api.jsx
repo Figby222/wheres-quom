@@ -26,4 +26,18 @@ const selectCharacterPositionPost = async (characterId, targetBoxCoordinatePerce
 
     return { success: response.success, coordinates: coordinates, characterId: response.characterId }
 }
-export { selectCharacterPositionPost };
+
+const submitScorePut = async (username) => {
+    const apiLink = "/";
+    
+    const response = await fetch(apiLink, {
+        mode: "cors",
+        method: "PUT",
+        body: {
+            username: username
+        }
+    });
+
+    return { success: response.success, ...response }
+}
+export { selectCharacterPositionPost, submitScorePut };
