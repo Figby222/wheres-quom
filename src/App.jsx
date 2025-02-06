@@ -5,13 +5,15 @@ import MainImageUtils from "./util/MainImageUtils.jsx";
 import useAllData from "./util/useAllData.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <MainImage useAllData={useAllData} selectCharacterPositionPost={MainImageUtils.selectCharacterPositionPost} submitScorePut={MainImageUtils.submitScorePut} />
+      <MainImage 
+        useAllData={useAllData} 
+        selectCharacterPositionPost={MainImageUtils.selectCharacterPositionPost} 
+        submitScorePut={MainImageUtils.submitScorePut} 
+      />
     </>
   )
 }
 
-export default App
+export default App;
