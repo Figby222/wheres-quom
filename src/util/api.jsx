@@ -1,7 +1,10 @@
-const selectCharacterPositionPost = async (characterId, targetBoxCoordinatePercentages) => {
+const selectCharacterPositionPost = async (characterId, targetBoxCoordinatePercentages, authToken) => {
     const apiLink = "/";
     const response = await fetch(apiLink, {
         mode: "cors",
+        headers: {
+            "Authorization": authToken
+        },
         body: {
             characterId: characterId,
             targetBoxXPercentage: targetBoxCoordinatePercentages.x,
