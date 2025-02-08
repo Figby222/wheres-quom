@@ -30,10 +30,13 @@ const selectCharacterPositionPost = async (characterId, targetBoxCoordinatePerce
     return { success: response.success, coordinates: coordinates, characterId: response.characterId }
 }
 
-const submitScorePut = async (username) => {
+const submitScorePut = async (username, authToken) => {
     const apiLink = "/";
     
     const response = await fetch(apiLink, {
+        headers: {
+            "Authorization": authToken
+        },
         mode: "cors",
         method: "PUT",
         body: {
