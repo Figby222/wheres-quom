@@ -5,6 +5,7 @@ const selectCharacterPositionPost = async (characterId, targetBoxCoordinatePerce
         headers: {
             "Authorization": authToken
         },
+        method: "POST",
         body: {
             characterId: characterId,
             targetBoxXPercentage: targetBoxCoordinatePercentages.x,
