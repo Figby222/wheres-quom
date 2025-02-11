@@ -1,5 +1,5 @@
 const selectCharacterPositionPost = async (characterId, targetBoxCoordinatePercentages, authToken) => {
-    const apiLink = "/";
+    const apiLink = "http://localhost:6464/api/v1/game";
     const response = await fetch(apiLink, {
         mode: "cors",
         headers: {
