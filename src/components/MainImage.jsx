@@ -124,11 +124,11 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
                         />a
                     </label>
                     <button type="submit" hidden={!userDidWin}>Submit</button>
-                </form>a
+                </form>
             </dialog>
             <img src="" alt={data.imageAlt} onClick={onImageClick} useMap={"main_image"} />
                 <map name="main_image">
-                    a{
+                    {
                         characterMarkers.map((characterMarker) => {
                             return <CharacterMarker
                                 coordinates={{ 
@@ -140,9 +140,9 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
                             />
                         })
                     }
-                </map>a
+                </map>
                 <section className="character-selection">
-                    a{ 
+                    { 
                         targetBoxCoordinates && 
                         <>
                             <TargetBox coordinates={targetBoxCoordinates} size="" /> 
@@ -156,7 +156,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
                                 })}
                             </ul>
                         </>
-                    }a
+                    }
                 </section>
             </>
     )
