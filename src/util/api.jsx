@@ -32,7 +32,7 @@ const selectCharacterPositionPost = async (characterId, targetBoxCoordinatePerce
 }
 
 const submitScorePut = async (username, authToken) => {
-    const apiLink = "/";
+    const apiLink = "http://localhost:6464/api/v1/game";
     
     const response = await fetch(apiLink, {
         headers: {
