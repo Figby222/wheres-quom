@@ -5,7 +5,7 @@ import CharacterMarker from "./CharacterMarker.jsx";
 import { getCoordinateAsPercentageOfElementLength, getCoordinateFromLengthPercentage } from "../util/MainImageUtils.jsx";
 
 const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) => {
-    const { error, loading, data } = useAllData();
+    const { error, loading, data } = useAllData("http://localhost:6464/api/v1/game");
     const [ targetBoxCoordinates, setTargetBoxCoordinates ] = useState(null);
     const [ characterMarkers, setCharacterMarkers ] = useState([]);
     const [ userDidWin, setUserDidWin ] = useState(false);
