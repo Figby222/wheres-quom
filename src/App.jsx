@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import MainImage from "./components/MainImage.jsx";
-import MainImageUtils from "./util/MainImageUtils.jsx";
+import * as MainImageUtils from "./util/MainImageUtils.jsx";
 import useAllData from "./util/useAllData.jsx";
 
 function App() {
