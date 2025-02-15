@@ -126,7 +126,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
                     <button type="submit" hidden={!userDidWin}>Submit</button>
                 </form>
             </dialog>
-            <img src="" alt={data.imageAlt} onClick={onImageClick} useMap={"main_image"} />
+            <img src="" alt={"Where's Waldo Image"} onClick={onImageClick} useMap={"main_image"} />
                 <map name="main_image">
                     {
                         characterMarkers.map((characterMarker) => {
