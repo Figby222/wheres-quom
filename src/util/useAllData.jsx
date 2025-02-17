@@ -6,7 +6,7 @@ const useAllData = (apiLink) => {
     const [ loading, setLoading ] = useState(true);
 
     useEffect(() => {
-        fetch(apiLink, { mode: "cors" })
+        fetch(apiLink, { mode: "cors", method: "POST" })
             .then((response) => response.json())
             .then((response) => setData(response))
             .catch((error) => setError(error))
