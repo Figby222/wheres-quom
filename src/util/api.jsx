@@ -1,5 +1,5 @@
 const selectCharacterPositionPost = async (characterId, targetBoxCoordinatePercentages, authToken) => {
-    const apiLink = "http://localhost:6464/api/v1/game";
+    const apiLink = "http://localhost:6464/api/v1/play";
     const response = await fetch(apiLink, {
         mode: "cors",
         headers: {
@@ -32,7 +32,7 @@ const selectCharacterPositionPost = async (characterId, targetBoxCoordinatePerce
 }
 
 const submitScorePut = async (username, authToken) => {
-    const apiLink = "http://localhost:6464/api/v1/game";
+    const apiLink = "http://localhost:6464/api/v1/play";
     
     const response = await fetch(apiLink, {
         headers: {
