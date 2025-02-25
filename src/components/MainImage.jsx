@@ -147,7 +147,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
                     { 
                         targetBoxCoordinates && 
                         <>
-                            <TargetBox coordinates={targetBoxCoordinates} size="" /> 
+                            <TargetBox coordinates={targetBoxCoordinates} size="10px" /> 
                             <ul className="character-selection-ul">
                                 { data.characters.map((character) => {
                                     return <li key={character.id} className="select-character">
