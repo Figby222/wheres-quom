@@ -8,7 +8,8 @@ const TargetBox = ({ coordinates, size }) => {
                     left: `${coordinates.x}px`, 
                     top: `${coordinates.y}px`, 
                     width: size, 
-                    height: size 
+                    height: size ,
+                    border: "2px solid red"
                     }}></div>
         </>
     )
