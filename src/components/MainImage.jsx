@@ -147,13 +147,13 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
                         targetBoxCoordinates && 
                         <>
                             <section className="character-selection" style={{
+                                position: "absolute",
+                                left: `${targetBoxCoordinates.x}px`,
+                                top: `${targetBoxCoordinates.y + 10}px`,
                                 
                             }}>
                                 <TargetBox coordinates={targetBoxCoordinates} size="28px" /> 
                                 <ul className="character-selection-ul" style={{
-                                    position: "absolute",
-                                    left: `${targetBoxCoordinates.x}px`,
-                                    top: `${targetBoxCoordinates.y + 10}px`,
                                 }}>
                                     { data.characters.map((character) => {
                                         return <li key={character.id} className="select-character">
