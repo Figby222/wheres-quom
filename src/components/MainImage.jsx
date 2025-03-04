@@ -143,27 +143,29 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
                         })
                     }
                 </map>
-                <section className="character-selection">
                     { 
                         targetBoxCoordinates && 
                         <>
-                            <TargetBox coordinates={targetBoxCoordinates} size="10px" /> 
-                            <ul className="character-selection-ul" style={{
-                                position: "absolute",
-                                left: `${targetBoxCoordinates.x}px`,
-                                top: `${targetBoxCoordinates.y + 10}px`,
+                            <section className="character-selection" style={{
+                                
                             }}>
-                                { data.characters.map((character) => {
-                                    return <li key={character.id} className="select-character">
-                                        <button type="button" onClick={(e) => onCharacterPositionSubmission(e, character.id)}>
-                                            { character.name }
-                                        </button>
-                                    </li>
-                                })}
-                            </ul>
+                                <TargetBox coordinates={targetBoxCoordinates} size="10px" /> 
+                                <ul className="character-selection-ul" style={{
+                                    position: "absolute",
+                                    left: `${targetBoxCoordinates.x}px`,
+                                    top: `${targetBoxCoordinates.y + 10}px`,
+                                }}>
+                                    { data.characters.map((character) => {
+                                        return <li key={character.id} className="select-character">
+                                            <button type="button" onClick={(e) => onCharacterPositionSubmission(e, character.id)}>
+                                                { character.name }
+                                            </button>
+                                        </li>
+                                    })}
+                                </ul>
+                            </section>
                         </>
                     }
-                </section>
             </>
     )
 };
