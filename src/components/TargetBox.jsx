@@ -4,9 +4,6 @@ const TargetBox = ({ coordinates, size }) => {
     return (
         <>
             <div className="target-box" role="targetbox" style={{ 
-                    position: "absolute", 
-                    left: `${coordinates.x}px`, 
-                    top: `${coordinates.y}px`, 
                     width: size, 
                     height: size ,
                     border: "2px solid red"
