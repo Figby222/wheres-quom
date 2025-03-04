@@ -149,7 +149,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
                             <section className="character-selection" style={{
                                 
                             }}>
-                                <TargetBox coordinates={targetBoxCoordinates} size="10px" /> 
+                                <TargetBox coordinates={targetBoxCoordinates} size="28px" /> 
                                 <ul className="character-selection-ul" style={{
                                     position: "absolute",
                                     left: `${targetBoxCoordinates.x}px`,
