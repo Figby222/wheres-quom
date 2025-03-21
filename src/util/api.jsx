@@ -1,4 +1,4 @@
-const selectCharacterPositionPost = async (characterId, targetBoxCoordinatePercentages, authToken) => {
+const selectCharacterPositionPut = async (characterId, targetBoxCoordinatePercentages, authToken) => {
     const apiLink = "http://localhost:6464/api/v1/play";
     const response = await fetch(apiLink, {
         mode: "cors",
@@ -47,4 +47,4 @@ const submitScorePut = async (username, authToken) => {
 
     return { success: response.success, ...response }
 }
-export { selectCharacterPositionPost, submitScorePut };
+export { selectCharacterPositionPut, submitScorePut };
