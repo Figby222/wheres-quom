@@ -100,7 +100,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
 
     return (
         <>
-        <main style={{ position: "relative" }}>
+        <main style={{  }}>
             <section>
                 <p>{ gameError }</p>
             </section>
