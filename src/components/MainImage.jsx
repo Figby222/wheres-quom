@@ -25,7 +25,10 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
     const onImageClick = (e) => {
         e.preventDefault();
 
-        setTargetBoxCoordinates({ x: e.clientX, y: e.clientY })
+        setTargetBoxCoordinates({ x: e.pageX, y: e.pageY })
+        console.log(e.target.getBoundingClientRect());
+        console.log(targetBoxCoordinates);
+        console.log(e.target);
     }
 
     const onWinnerFormSubmission = async (e) => {
