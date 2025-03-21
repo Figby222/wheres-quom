@@ -48,9 +48,9 @@ describe("useAllData", () => {
     it("Calls useAllData on render", () => {
         const mockUseAllData = getUseAllDataMock(false, true, null);
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({})); 
+        const mockSelectCharacterPositionPut = vi.fn(() => ({})); 
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         expect(mockUseAllData)
             .toHaveBeenCalled();
@@ -61,9 +61,9 @@ describe("Image loading", () => {
     it("Returns loading feedback whilst loading", () => {
         const mockUseAllData = getUseAllDataMock(false, true, null);
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+        const mockSelectCharacterPositionPut = vi.fn(() => ({}));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         expect(screen.queryByText(/Loading/i))
             .toBeInTheDocument();
@@ -76,9 +76,9 @@ describe("Image loading", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+        const mockSelectCharacterPositionPut = vi.fn(() => ({}));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
         
         expect(screen.queryByText(/Loading/i))
             .not.toBeInTheDocument();
@@ -92,9 +92,9 @@ describe("Image loading", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+        const mockSelectCharacterPositionPut = vi.fn(() => ({}));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         expect(screen.queryByText(/Loading/i))
             .not.toBeInTheDocument();
@@ -111,9 +111,9 @@ describe("Image loading", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+        const mockSelectCharacterPositionPut = vi.fn(() => ({}));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         expect(screen.queryByText(/Loading/i))
             .not.toBeInTheDocument();
@@ -137,9 +137,9 @@ describe("Clicking the image", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+        const mockSelectCharacterPositionPut = vi.fn(() => ({}));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         const image = screen.queryByAltText(/Test Alt Text/i);
 
@@ -163,9 +163,9 @@ describe("Clicking the image", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+        const mockSelectCharacterPositionPut = vi.fn(() => ({}));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         const image = screen.queryByAltText(/Test Alt Text/i);
 
@@ -193,9 +193,9 @@ describe("Clicking the image", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+        const mockSelectCharacterPositionPut = vi.fn(() => ({}));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         const image = screen.queryByAltText(/Test Alt Text/i);
 
@@ -223,9 +223,9 @@ describe("Clicking the image", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+        const mockSelectCharacterPositionPut = vi.fn(() => ({}));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         expect(screen.queryByText(/Comal/i))
             .not.toBeInTheDocument();
@@ -252,9 +252,9 @@ describe("Clicking the image", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+        const mockSelectCharacterPositionPut = vi.fn(() => ({}));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
         
         const image = screen.queryByAltText(/Test Alt Text/i);
 
@@ -283,9 +283,9 @@ describe("Clicking the image", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+        const mockSelectCharacterPositionPut = vi.fn(() => ({}));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         expect(screen.queryByRole("targetbox"))
             .not.toBeInTheDocument();
@@ -314,9 +314,9 @@ describe("Target Box", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+        const mockSelectCharacterPositionPut = vi.fn(() => ({}));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -362,9 +362,9 @@ describe("Target Box", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+        const mockSelectCharacterPositionPut = vi.fn(() => ({}));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -394,7 +394,7 @@ describe("Target Box", () => {
     })
 })
 
-describe("SelectCharacterPositionPost", () => {
+describe("selectCharacterPositionPut", () => {
     afterEach(() => {
         vi.restoreAllMocks();
     });
@@ -416,9 +416,9 @@ describe("SelectCharacterPositionPost", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+        const mockSelectCharacterPositionPut = vi.fn(() => ({}));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         const image = screen.queryByAltText("Test Alt Text");
         
@@ -435,7 +435,7 @@ describe("SelectCharacterPositionPost", () => {
         
         await user.click(comalButton);
 
-        expect(mockSelectCharacterPositionPost)
+        expect(mockSelectCharacterPositionPut)
             .toHaveBeenCalled();
     })
 
@@ -456,9 +456,9 @@ describe("SelectCharacterPositionPost", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+        const mockSelectCharacterPositionPut = vi.fn(() => ({}));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         const image = screen.queryByAltText("Test Alt Text");
         
@@ -471,7 +471,7 @@ describe("SelectCharacterPositionPost", () => {
             coords: { x: 46, y: 64 },
         })
 
-        expect(mockSelectCharacterPositionPost)
+        expect(mockSelectCharacterPositionPut)
             .not.toHaveBeenCalled();
     })
 
@@ -492,9 +492,9 @@ describe("SelectCharacterPositionPost", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+        const mockSelectCharacterPositionPut = vi.fn(() => ({}));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -539,7 +539,7 @@ describe("SelectCharacterPositionPost", () => {
         const xCoordinateAsPercentageOfImageWidth = getElementCoordinatePercentage(x, imageOffsetX, imageRect.width);
         const yCoordinateAsPercentageOfImageHeight = getElementCoordinatePercentage(y, imageOffsetY, imageRect.height);
 
-        expect(mockSelectCharacterPositionPost)
+        expect(mockSelectCharacterPositionPut)
             .toHaveBeenCalledWith(1, {
                 x: xCoordinateAsPercentageOfImageWidth,
                 y: yCoordinateAsPercentageOfImageHeight
@@ -564,9 +564,9 @@ describe("SelectCharacterPositionPost", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({}));
+        const mockSelectCharacterPositionPut = vi.fn(() => ({}));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -611,12 +611,12 @@ describe("SelectCharacterPositionPost", () => {
         const xCoordinateAsPercentageOfImageWidth = getElementCoordinatePercentage(x, imageOffsetX, imageRect.width);
         const yCoordinateAsPercentageOfImageHeight = getElementCoordinatePercentage(y, imageOffsetY, imageRect.height);
 
-        expect(mockSelectCharacterPositionPost)
+        expect(mockSelectCharacterPositionPut)
             .not.toHaveBeenCalledWith(1, {
                 x: 1.4000000000000001,
                 y: 12
             })
-        expect(mockSelectCharacterPositionPost)
+        expect(mockSelectCharacterPositionPut)
             .toHaveBeenCalledWith(2, {
                 x: xCoordinateAsPercentageOfImageWidth,
                 y: yCoordinateAsPercentageOfImageHeight
@@ -646,7 +646,7 @@ describe("CharacterMarker", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             success: true,
             characterId: 4,
             coordinates: {
@@ -655,7 +655,7 @@ describe("CharacterMarker", () => {
             }
         }));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -707,11 +707,11 @@ describe("CharacterMarker", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             success: false
         }));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -765,7 +765,7 @@ describe("CharacterMarker", () => {
         const characterMarkerXPercentage = 4;
         const characterMarkerYPercentage = 8;
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             success: true,
             characterId: 4,
             coordinates: {
@@ -774,7 +774,7 @@ describe("CharacterMarker", () => {
             }
         }));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         const image = screen.queryByAltText("Test Alt Text");
 
@@ -825,7 +825,7 @@ describe("CharacterMarker", () => {
         const characterMarkerXPercentage = 4;
         const characterMarkerYPercentage = 8;
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             success: true,
             characterId: 4,
             coordinates: {
@@ -834,7 +834,7 @@ describe("CharacterMarker", () => {
             }
         }));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -912,7 +912,7 @@ describe("CharacterMarker", () => {
         const characterMarkerXPercentage = 46;
         const characterMarkerYPercentage = 64;
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             success: true,
             characterId: 64,
             coordinates: {
@@ -921,7 +921,7 @@ describe("CharacterMarker", () => {
             }
         }));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -1000,7 +1000,7 @@ describe("CharacterMarker", () => {
         const character3MarkerXPercentage = 1;
         const character3MarkerYPercentage = 2;
 
-        const mockSelectCharacterPositionPost = vi.fn((characterId) => {
+        const mockSelectCharacterPositionPut = vi.fn((characterId) => {
             if (characterId === 4) {
                 return {
                     success: true,
@@ -1022,7 +1022,7 @@ describe("CharacterMarker", () => {
             }
         });
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -1124,7 +1124,7 @@ describe("High Score Form", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             highScore: true,
             success: true,
             characterId: 4,
@@ -1134,7 +1134,7 @@ describe("High Score Form", () => {
             }
         }));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -1186,7 +1186,7 @@ describe("High Score Form", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             highScore: true,
             success: true,
             characterId: 4,
@@ -1196,7 +1196,7 @@ describe("High Score Form", () => {
             }
         }));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
 
 
@@ -1251,7 +1251,7 @@ describe("High Score Form", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             success: true,
             characterId: 4,
             coordinates: {
@@ -1260,7 +1260,7 @@ describe("High Score Form", () => {
             }
         }));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -1313,7 +1313,7 @@ describe("High Score Form", () => {
 
         
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             highScore: true,
             success: true,
             characterId: 4,
@@ -1323,7 +1323,7 @@ describe("High Score Form", () => {
             }
         }));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -1374,7 +1374,7 @@ describe("High Score Form", () => {
             leaderboardPlayers: [],
         });
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             success: true,
             characterId: 4,
             coordinates: {
@@ -1383,7 +1383,7 @@ describe("High Score Form", () => {
             }
         }));
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={() => ({})} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={() => ({})} />);
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
         .mockImplementation(() => ({
@@ -1448,7 +1448,7 @@ describe("submitScorePut", () => {
 
         
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             highScore: true,
             success: true,
             characterId: 4,
@@ -1460,7 +1460,7 @@ describe("submitScorePut", () => {
         
         const mockSubmitScorePut = vi.fn(() => ({}))
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={mockSubmitScorePut} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={mockSubmitScorePut} />);
         
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -1518,7 +1518,7 @@ describe("submitScorePut", () => {
 
         
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             highScore: true,
             success: true,
             characterId: 4,
@@ -1530,7 +1530,7 @@ describe("submitScorePut", () => {
         
         const mockSubmitScorePut = vi.fn(() => ({}))
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={mockSubmitScorePut} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={mockSubmitScorePut} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -1586,7 +1586,7 @@ describe("submitScorePut", () => {
 
         
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             highScore: true,
             success: true,
             characterId: 4,
@@ -1598,7 +1598,7 @@ describe("submitScorePut", () => {
         
         const mockSubmitScorePut = vi.fn(() => ({}))
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={mockSubmitScorePut} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={mockSubmitScorePut} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -1660,7 +1660,7 @@ describe("submitScorePut", () => {
 
         
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             highScore: true,
             success: true,
             characterId: 4,
@@ -1672,7 +1672,7 @@ describe("submitScorePut", () => {
         
         const mockSubmitScorePut = vi.fn(() => ({}))
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={mockSubmitScorePut} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={mockSubmitScorePut} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -1745,7 +1745,7 @@ describe("Leaderboard", () => {
         
 
         
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             highScore: true,
             success: true,
             characterId: 4,
@@ -1757,7 +1757,7 @@ describe("Leaderboard", () => {
         
         const mockSubmitScorePut = vi.fn(() => ({}))
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={mockSubmitScorePut} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={mockSubmitScorePut} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -1818,7 +1818,7 @@ describe("Leaderboard", () => {
 
         
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             highScore: true,
             success: true,
             characterId: 4,
@@ -1830,7 +1830,7 @@ describe("Leaderboard", () => {
         
         const mockSubmitScorePut = vi.fn(() => ({}))
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={mockSubmitScorePut} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={mockSubmitScorePut} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -1898,7 +1898,7 @@ describe("Leaderboard", () => {
 
         
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             highScore: true,
             success: true,
             characterId: 4,
@@ -1910,7 +1910,7 @@ describe("Leaderboard", () => {
         
         const mockSubmitScorePut = vi.fn(() => ({}))
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={mockSubmitScorePut} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={mockSubmitScorePut} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -1983,7 +1983,7 @@ describe("Leaderboard", () => {
 
         
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             highScore: true,
             success: true,
             characterId: 4,
@@ -1995,7 +1995,7 @@ describe("Leaderboard", () => {
         
         const mockSubmitScorePut = vi.fn(() => ({}))
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={mockSubmitScorePut} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={mockSubmitScorePut} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -2067,7 +2067,7 @@ describe("Leaderboard", () => {
 
         
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             highScore: true,
             success: true,
             characterId: 4,
@@ -2079,7 +2079,7 @@ describe("Leaderboard", () => {
         
         const mockSubmitScorePut = vi.fn(() => ({}))
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={mockSubmitScorePut} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={mockSubmitScorePut} />);
 
 
         vi
@@ -2152,7 +2152,7 @@ describe("Leaderboard", () => {
 
         
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             highScore: true,
             success: true,
             characterId: 4,
@@ -2164,7 +2164,7 @@ describe("Leaderboard", () => {
         
         const mockSubmitScorePut = vi.fn(() => ({}))
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={mockSubmitScorePut} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={mockSubmitScorePut} />);
 
         vi
         .spyOn(window.HTMLElement.prototype, "getBoundingClientRect")
@@ -2244,7 +2244,7 @@ describe("Winner submission errors", () => {
     
         
     
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             highScore: true,
             success: true,
             characterId: 4,
@@ -2258,7 +2258,7 @@ describe("Winner submission errors", () => {
             status: 403
         }))
     
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={mockSubmitScorePut} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={mockSubmitScorePut} />);
     
     
         vi
@@ -2335,7 +2335,7 @@ describe("Winner submission errors", () => {
 
         
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             highScore: true,
             success: true,
             characterId: 4,
@@ -2355,7 +2355,7 @@ describe("Winner submission errors", () => {
             ]
         }))
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={mockSubmitScorePut} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={mockSubmitScorePut} />);
 
             
 
@@ -2430,7 +2430,7 @@ describe("Winner submission errors", () => {
 
         
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             highScore: true,
             success: true,
             characterId: 4,
@@ -2444,7 +2444,7 @@ describe("Winner submission errors", () => {
             status: 400
         }))
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={mockSubmitScorePut} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={mockSubmitScorePut} />);
 
             
     
@@ -2510,7 +2510,7 @@ describe("Winner submission errors", () => {
 
         
 
-        const mockSelectCharacterPositionPost = vi.fn(() => ({
+        const mockSelectCharacterPositionPut = vi.fn(() => ({
             highScore: true,
             success: true,
             characterId: 4,
@@ -2524,7 +2524,7 @@ describe("Winner submission errors", () => {
             status: 400
         }))
 
-        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPost={mockSelectCharacterPositionPost} submitScorePut={mockSubmitScorePut} />);
+        render(<MainImage useAllData={mockUseAllData} selectCharacterPositionPut={mockSelectCharacterPositionPut} submitScorePut={mockSubmitScorePut} />);
 
             
     
