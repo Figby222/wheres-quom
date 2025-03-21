@@ -97,75 +97,78 @@ const MainImage = ({ useAllData, selectCharacterPositionPost, submitScorePut }) 
 
     return (
         <>
-        <section>
-            <p>{ gameError }</p>
-        </section>
-        {
-            isLeaderboardVisible &&
-            <section className="leaderboard" aria-label="leaderboard">
-                <ul>
-                    {
-                        leaderboardPlayers.map((player) => {
-                            return <li key={player.id}>
-                                { player.completionTime }
-                            </li>
-                        })
-                    }
-                </ul>
+        <main style={{ position: "relative" }}>
+            <section>
+                <p>{ gameError }</p>
             </section>
-        }a
-            <dialog open={userDidWin} hidden={!userDidWin}>
-                <form method="PUT" onSubmit={onWinnerFormSubmission} hidden={!userDidWin} aria-label="winner form">
-                    <p>Test Form Error Message</p>
-                    <label htmlFor="name" hidden={!userDidWin}>
-                        Name:
-                        <input type="text" name="name" id="name" 
-                            value={userName} 
-                            onChange={(e) => setUserName(e.target.value)} 
-                            hidden={!userDidWin} 
-                        />a
-                    </label>
-                    <button type="submit" hidden={!userDidWin}>Submit</button>
-                </form>
-            </dialog>
-            <img src={data.imageSrc} alt={data ? data.imageAlt : "Where's Waldo Image"} onClick={onImageClick} useMap={"main_image"} />
-                <map name="main_image">
-                    {
-                        characterMarkers.map((characterMarker) => {
-                            return <CharacterMarker
-                                coordinates={{ 
-                                    x: `${characterMarker.x}px`,
-                                    y: `${characterMarker.y}px`
-                                }}
-                                characterId={characterMarker.characterId}
-                                size={"10%"}
-                            />
-                        })
-                    }
-                </map>
-                    { 
-                        targetBoxCoordinates && 
-                        <>
-                            <section className="character-selection" style={{
-                                position: "absolute",
-                                left: `${targetBoxCoordinates.x}px`,
-                                top: `${targetBoxCoordinates.y + 10}px`,
-                                
-                            }}>
-                                <TargetBox coordinates={targetBoxCoordinates} size="28px" /> 
-                                <ul className="character-selection-ul" style={{
+            {
+                isLeaderboardVisible &&
+                <section className="leaderboard" aria-label="leaderboard">
+                    <ul>
+                        {
+                            leaderboardPlayers.map((player) => {
+                                return <li key={player.id}>
+                                    { player.completionTime }
+                                </li>
+                            })
+                        }
+                    </ul>
+                </section>
+            }a
+                <dialog open={userDidWin} hidden={!userDidWin}>
+                    <form method="PUT" onSubmit={onWinnerFormSubmission} hidden={!userDidWin} aria-label="winner form">
+                        <p>Test Form Error Message</p>
+                        <label htmlFor="name" hidden={!userDidWin}>
+                            Name:
+                            <input type="text" name="name" id="name" 
+                                value={userName} 
+                                onChange={(e) => setUserName(e.target.value)} 
+                                hidden={!userDidWin} 
+                            />a
+                        </label>
+                        <button type="submit" hidden={!userDidWin}>Submit</button>
+                    </form>
+                </dialog>
+                <img src={data.imageSrc} alt={data ? data.imageAlt : "Where's Waldo Image"} onClick={onImageClick} useMap={"main_image"} />
+                    <map name="main_image">
+                        {
+                            characterMarkers.map((characterMarker) => {
+                                return <CharacterMarker
+                                    coordinates={{ 
+                                        x: `${characterMarker.x}px`,
+                                        y: `${characterMarker.y}px`
+                                    }}
+                                    characterId={characterMarker.characterId}
+                                    size={"10%"}
+                                />
+                            })
+                        }
+                    </map>
+                        { 
+                            targetBoxCoordinates && 
+                            <>
+                                <section className="character-selection" style={{
+                                    position: "absolute",
+                                    left: `${targetBoxCoordinates.x}px`,
+                                    top: `${targetBoxCoordinates.y + 10}px`,
+                                    
                                 }}>
-                                    { data.characters.map((character) => {
-                                        return <li key={character.id} className="select-character">
-                                            <button type="button" onClick={(e) => onCharacterPositionSubmission(e, character.id)}>
-                                                { character.name }
-                                            </button>
-                                        </li>
-                                    })}
-                                </ul>
-                            </section>
-                        </>
-                    }
+                                    <TargetBox coordinates={targetBoxCoordinates} size="28px" /> 
+                                    <ul className="character-selection-ul" style={{
+                                    }}>
+                                        { data.characters.map((character) => {
+                                            return <li key={character.id} className="select-character">
+                                                <button type="button" onClick={(e) => onCharacterPositionSubmission(e, character.id)}>
+                                                    { character.name }
+                                                </button>
+                                            </li>
+                                        })}
+                                    </ul>
+                                </section>
+                            </>
+                        }
+
+        </main>
             </>
     )
 };
