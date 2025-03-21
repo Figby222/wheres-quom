@@ -11,7 +11,7 @@ function App() {
       <MainImage 
         useAllData={useAllData} 
         selectCharacterPositionPost={selectCharacterPositionPost} 
-        submitScorePut={MainImageUtils.submitScorePut} 
+        submitScorePut={MainImageUtils.submitScorePut}
       />
     </>
   )
