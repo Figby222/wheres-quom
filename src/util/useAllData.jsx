@@ -7,8 +7,8 @@ const useAllData = (apiLink) => {
 
     useEffect(() => {
         fetch(apiLink, { mode: "cors", method: "POST" })
-            .then((response) => response.json())
-            .then((response) => setData(response))
+            .then(async (response) => {return { token: response.headers.get("authorization"), data: await response.json() } })
+            .then((response) => setData({ ...response.data, authorization: response.token }))
             .catch((error) => setError(error))
             .finally(() => setLoading(false));
     }, [apiLink])
