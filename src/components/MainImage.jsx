@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TargetBox from "./TargetBox.jsx";
 import CharacterMarker from "./CharacterMarker.jsx";
 import { getCoordinateAsPercentageOfElementLength, getCoordinateFromLengthPercentage } from "../util/MainImageUtils.jsx";
+import * as tokenStorage from "../util/storage.jsx";
 
 const MainImage = ({ useAllData, selectCharacterPositionPut, submitScorePut }) => {
     const { error, loading, data } = useAllData("http://localhost:6464/api/v1/play");
@@ -14,6 +15,15 @@ const MainImage = ({ useAllData, selectCharacterPositionPut, submitScorePut }) =
     const [ leaderboardPlayers, setLeaderboardPlayers ] = useState(data && data.leaderboardPlayers ? data.leaderboardPlayers : []);
     const [ isLeaderboardVisible, setIsLeaderboardVisible ] = useState(false);
     const [ gameError, setGameError ] = useState(null);
+    console.log(data);
+    useEffect(() => {
+        if (!loading) {
+            console.log(data);
+            tokenStorage.storeBearerToken(data.authorization);
+
+
+        }
+    }, [data])
 
     if (loading) {
         console.log("Loading");
