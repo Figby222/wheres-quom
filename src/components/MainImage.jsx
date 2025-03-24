@@ -56,6 +56,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPut, submitScorePut }) =
 
     const onCharacterPositionSubmission = (e, characterId) => {
         e.preventDefault();
+        const authorizationToken = tokenStorage.getBearerToken();
 
         const { x, y } = targetBoxCoordinates;
 
@@ -76,7 +77,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPut, submitScorePut }) =
         const response = selectCharacterPositionPut(characterId, {
             x: xCoordinateAsPercentageOfImageWidth,
             y: yCoordinateAsPercentageOfImageHeight
-        });
+        }, authorizationToken);
 
         console.log(response);
 
