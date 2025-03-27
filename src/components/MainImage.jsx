@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import TargetBox from "./TargetBox.jsx";
 import CharacterMarker from "./CharacterMarker.jsx";
 import { getCoordinateAsPercentageOfElementLength, getCoordinateFromLengthPercentage } from "../util/MainImageUtils.jsx";
@@ -16,6 +16,8 @@ const MainImage = ({ useAllData, selectCharacterPositionPut, submitScorePut }) =
     const [ isLeaderboardVisible, setIsLeaderboardVisible ] = useState(false);
     const [ gameError, setGameError ] = useState(null);
     console.log(data);
+    const mainImageRef = useRef(null);
+
     useEffect(() => {
         if (!loading) {
             console.log(data);
@@ -60,7 +62,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPut, submitScorePut }) =
 
         const { x, y } = targetBoxCoordinates;
 
-        const imageRect = e.target.getBoundingClientRect();
+        const imageRect = mainImageRef.current.getBoundingClientRect();
 
         const imageOffsetX = imageRect.left;
         const imageOffsetY = imageRect.top;
@@ -143,7 +145,7 @@ const MainImage = ({ useAllData, selectCharacterPositionPut, submitScorePut }) =
                         <button type="submit" hidden={!userDidWin}>Submit</button>
                     </form>
                 </dialog>
-                <img src={data.imageSrc} alt={data ? data.imageAlt : "Where's Waldo Image"} onClick={onImageClick} useMap={"main_image"} />
+                <img src={data.imageSrc} alt={data ? data.imageAlt : "Where's Waldo Image"} onClick={onImageClick} useMap={"main_image"} ref={mainImageRef} />
                     <map name="main_image">
                         {
                             characterMarkers.map((characterMarker) => {
