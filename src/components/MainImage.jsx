@@ -77,8 +77,8 @@ const MainImage = ({ useAllData, selectCharacterPositionPut, submitScorePut }) =
             );
         
         const response = selectCharacterPositionPut(characterId, {
-            x: xCoordinateAsPercentageOfImageWidth,
-            y: yCoordinateAsPercentageOfImageHeight
+            x: Math.round(xCoordinateAsPercentageOfImageWidth*100) / 100,
+            y: Math.round(yCoordinateAsPercentageOfImageHeight*100) / 100
         }, authorizationToken);
 
         console.log(response);
