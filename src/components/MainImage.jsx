@@ -69,11 +69,11 @@ const MainImage = ({ useAllData, selectCharacterPositionPut, submitScorePut }) =
 
         const xCoordinateAsPercentageOfImageWidth =
             getCoordinateAsPercentageOfElementLength(
-                x, imageOffsetX, imageRect.width
+                x, 0, imageRect.width
             );
         const yCoordinateAsPercentageOfImageHeight = 
             getCoordinateAsPercentageOfElementLength(
-                y, imageOffsetY, imageRect.height
+                y, 0, imageRect.height
             );
         
         const response = selectCharacterPositionPut(characterId, {
