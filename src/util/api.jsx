@@ -6,11 +6,11 @@ const selectCharacterPositionPut = async (characterId, targetBoxCoordinatePercen
             "Authorization": authToken
         },
         method: "PUT",
-        body: {
+        body: JSON.stringify({
             characterId: characterId,
             targetBoxXPercentage: targetBoxCoordinatePercentages.x,
             targetBoxYPercentage: targetBoxCoordinatePercentages.y
-        }
+        })
     })
 
     const character = response.charactersFound.find((character) => {
