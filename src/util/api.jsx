@@ -3,7 +3,8 @@ const selectCharacterPositionPut = async (characterId, targetBoxCoordinatePercen
     const response = await fetch(apiLink, {
         mode: "cors",
         headers: {
-            "Authorization": authToken
+            "Authorization": authToken,
+            "content-type": "application/json"
         },
         method: "PUT",
         body: JSON.stringify({
